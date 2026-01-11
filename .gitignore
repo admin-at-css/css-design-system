@@ -1,0 +1,87 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build outputs
+dist/
+build/
+out/
+.next/
+.nuxt/
+
+# Cache
+.cache/
+.turbo/
+.eslintcache
+*.tsbuildinfo
+
+# Testing
+coverage/
+.nyc_output/
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env
+
+# IDE and editors
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Storybook
+storybook-static/
+
+# Temporary files
+*.tmp
+*.temp
+.tmp/
+.temp/
+
+# Package manager locks (keep the one you use)
+# yarn.lock
+# pnpm-lock.yaml
+# package-lock.json
+
+# Local configuration
+*.local
+.claude/
+
+# Secrets and credentials
+*.pem
+*.key
+*.cert
+credentials.json
+secrets.json
+
+# Debug
+.debug/
+
+# Generated files
+*.generated.*
+auto-generated/

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://design-tokens.json-schema.org/",
+  "name": "CSS Design System Tokens",
+  "version": "1.0.0",
+  "description": "Complete design token set for Cepat Service Station Design System",
+
+  "imports": [
+    "./colors.json",
+    "./typography.json",
+    "./spacing.json",
+    "./breakpoints.json",
+    "./shadows.json",
+    "./animations.json",
+    "./borders.json"
+  ],
+
+  "meta": {
+    "author": "CSS Design System Team",
+    "license": "MIT",
+    "brand": "Cepat Service Station (PT CSS)",
+    "principles": "Refactoring UI",
+    "lastUpdated": "2024-01-11"
+  }
+}

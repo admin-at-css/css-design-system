@@ -1,0 +1,103 @@
+/**
+ * CSS Design System - Dark Theme
+ *
+ * Dark theme color tokens that override the base light theme.
+ * Apply using [data-theme='dark'] on html or body element.
+ */
+
+[data-theme='dark'] {
+  /* Color scheme hint for browser */
+  color-scheme: dark;
+
+  /* Background colors */
+  --bg-default: #0f172a;
+  --bg-subtle: #1e293b;
+  --bg-muted: #334155;
+  --bg-emphasis: #475569;
+  --bg-inverse: #f8fafc;
+
+  /* Text colors */
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-tertiary: #94a3b8;
+  --text-disabled: #64748b;
+  --text-inverse: #0f172a;
+
+  /* Border colors */
+  --border-default: #334155;
+  --border-muted: #1e293b;
+  --border-emphasis: #475569;
+  --border-strong: #64748b;
+
+  /* Component backgrounds */
+  --card-bg: #1e293b;
+  --card-border: #334155;
+
+  --input-bg: #1e293b;
+  --input-border: #475569;
+  --input-border-focus: var(--color-primary-400);
+
+  --button-ghost-hover: #334155;
+  --button-ghost-active: #475569;
+
+  /* Overlay */
+  --overlay-bg: rgba(0, 0, 0, 0.7);
+
+  /* Shadows - adjusted for dark mode */
+  --shadow-color: 220 40% 2%;
+  --shadow-strength: 25%;
+
+  /* Adjusted shadows for dark mode */
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px -1px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+
+  /* Primary colors - slightly brighter for dark mode */
+  --color-primary: var(--color-primary-400);
+
+  /* Link colors */
+  --text-link: #60a5fa;
+  --text-link-hover: #93c5fd;
+}
+
+/* System preference dark mode */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    /* Apply dark theme when system prefers dark and no explicit theme set */
+    color-scheme: dark;
+
+    --bg-default: #0f172a;
+    --bg-subtle: #1e293b;
+    --bg-muted: #334155;
+    --bg-emphasis: #475569;
+    --bg-inverse: #f8fafc;
+
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-tertiary: #94a3b8;
+    --text-disabled: #64748b;
+    --text-inverse: #0f172a;
+
+    --border-default: #334155;
+    --border-muted: #1e293b;
+    --border-emphasis: #475569;
+    --border-strong: #64748b;
+
+    --card-bg: #1e293b;
+    --card-border: #334155;
+
+    --input-bg: #1e293b;
+    --input-border: #475569;
+
+    --button-ghost-hover: #334155;
+    --button-ghost-active: #475569;
+
+    --overlay-bg: rgba(0, 0, 0, 0.7);
+
+    --text-link: #60a5fa;
+    --text-link-hover: #93c5fd;
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "$schema": "https://design-tokens.json-schema.org/",
+  "name": "CSS Design System Breakpoints",
+  "description": "Responsive breakpoints for mobile-first design approach",
+
+  "breakpoints": {
+    "xs": {
+      "value": "320px",
+      "description": "Small mobile devices",
+      "maxWidth": "374px"
+    },
+    "sm": {
+      "value": "375px",
+      "description": "Standard mobile devices (iPhone SE)",
+      "maxWidth": "639px"
+    },
+    "md": {
+      "value": "640px",
+      "description": "Large mobile / Small tablet",
+      "maxWidth": "767px"
+    },
+    "lg": {
+      "value": "768px",
+      "description": "Tablet portrait mode",
+      "maxWidth": "1023px"
+    },
+    "xl": {
+      "value": "1024px",
+      "description": "Tablet landscape / Small desktop",
+      "maxWidth": "1279px"
+    },
+    "2xl": {
+      "value": "1280px",
+      "description": "Standard desktop",
+      "maxWidth": "1535px"
+    },
+    "3xl": {
+      "value": "1536px",
+      "description": "Large desktop / Wide monitors",
+      "maxWidth": "1919px"
+    },
+    "4xl": {
+      "value": "1920px",
+      "description": "Ultra-wide / 4K displays",
+      "maxWidth": null
+    }
+  },
+
+  "containers": {
+    "xs": { "value": "320px", "description": "Extra small container" },
+    "sm": { "value": "640px", "description": "Small container" },
+    "md": { "value": "768px", "description": "Medium container" },
+    "lg": { "value": "1024px", "description": "Large container" },
+    "xl": { "value": "1280px", "description": "Extra large container" },
+    "2xl": { "value": "1536px", "description": "2x extra large container" },
+    "prose": { "value": "65ch", "description": "Optimal reading width (~65 characters)" }
+  },
+
+  "mediaQueries": {
+    "mobile": "@media (max-width: 639px)",
+    "tablet": "@media (min-width: 640px) and (max-width: 1023px)",
+    "desktop": "@media (min-width: 1024px)",
+    "print": "@media print",
+    "reducedMotion": "@media (prefers-reduced-motion: reduce)",
+    "darkMode": "@media (prefers-color-scheme: dark)",
+    "lightMode": "@media (prefers-color-scheme: light)",
+    "highContrast": "@media (prefers-contrast: high)",
+    "hover": "@media (hover: hover)",
+    "touch": "@media (hover: none) and (pointer: coarse)"
+  }
+}

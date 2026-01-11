@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spacing Scale - CSS Design System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --css-navy: #1b2a53;
+            --css-sky: #356a9d;
+            --neutral-50: #f8fafc;
+            --neutral-100: #f1f5f9;
+            --neutral-200: #e2e8f0;
+            --neutral-300: #cbd5e1;
+            --neutral-400: #94a3b8;
+            --neutral-500: #64748b;
+            --neutral-600: #475569;
+            --neutral-700: #334155;
+            --neutral-800: #1e293b;
+            --neutral-900: #0f172a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--neutral-50);
+            color: var(--neutral-800);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Navigation */
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--neutral-200);
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--css-navy);
+        }
+
+        .nav-logo {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-logo svg {
+            width: 40px;
+            height: 40px;
+        }
+
+        .nav-title {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .nav-back {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--neutral-500);
+            text-decoration: none;
+            font-size: 0.875rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .nav-back:hover {
+            background: var(--neutral-100);
+            color: var(--neutral-700);
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--css-navy);
+            letter-spacing: -0.025em;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--neutral-500);
+            font-size: 1.1rem;
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--css-navy);
+        }
+
+        .section-description {
+            color: var(--neutral-500);
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: linear-gradient(135deg, var(--css-navy) 0%, var(--css-sky) 100%);
+            border-radius: 16px;
+            padding: 2rem;
+            color: white;
+            margin-bottom: 3rem;
+        }
+
+        .info-box h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .info-box p {
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        .info-box code {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.125rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+        }
+
+        /* Spacing Scale Visual */
+        .spacing-visual {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--neutral-200);
+        }
+
+        .spacing-row {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--neutral-100);
+            gap: 1.5rem;
+        }
+
+        .spacing-row:last-child {
+            border-bottom: none;
+        }
+
+        .spacing-row:hover {
+            background: var(--neutral-50);
+            margin: 0 -1rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            border-radius: 8px;
+        }
+
+        .spacing-token {
+            width: 60px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--css-sky);
+        }
+
+        .spacing-value {
+            width: 80px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--neutral-400);
+        }
+
+        .spacing-bar-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .spacing-bar {
+            height: 24px;
+            background: linear-gradient(135deg, var(--css-navy), var(--css-sky));
+            border-radius: 4px;
+            min-width: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .spacing-row:hover .spacing-bar {
+            opacity: 0.8;
+        }
+
+        .spacing-desc {
+            width: 200px;
+            font-size: 0.8rem;
+            color: var(--neutral-500);
+        }
+
+        /* Semantic Spacing */
+        .semantic-spacing {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        @media (max-width: 900px) {
+            .semantic-spacing {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .semantic-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--neutral-200);
+            text-align: center;
+        }
+
+        .semantic-visual {
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .semantic-box {
+            background: linear-gradient(135deg, var(--css-navy), var(--css-sky));
+            border-radius: 4px;
+        }
+
+        .semantic-name {
+            font-weight: 600;
+            color: var(--neutral-800);
+            margin-bottom: 0.25rem;
+        }
+
+        .semantic-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--neutral-400);
+        }
+
+        /* Component Spacing */
+        .component-spacing {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--neutral-200);
+        }
+
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        @media (max-width: 700px) {
+            .component-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .component-item {
+            padding: 1.5rem;
+            background: var(--neutral-50);
+            border-radius: 12px;
+        }
+
+        .component-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .component-name {
+            font-weight: 600;
+            color: var(--neutral-700);
+        }
+
+        .component-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--css-sky);
+            background: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .component-demo {
+            position: relative;
+        }
+
+        /* Button Demo */
+        .demo-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 16px;
+            background: var(--css-navy);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            gap: 8px;
+        }
+
+        .demo-button svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Input Demo */
+        .demo-input {
+            display: block;
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid var(--neutral-300);
+            border-radius: 6px;
+            font-size: 0.875rem;
+            background: white;
+        }
+
+        /* Card Demo */
+        .demo-card {
+            background: white;
+            border-radius: 8px;
+            padding: 24px;
+            border: 1px solid var(--neutral-200);
+        }
+
+        .demo-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .demo-card p {
+            font-size: 0.875rem;
+            color: var(--neutral-500);
+        }
+
+        /* Measurement Overlay */
+        .measurement {
+            position: absolute;
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px dashed #ef4444;
+        }
+
+        .measurement-label {
+            position: absolute;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.6rem;
+            color: #ef4444;
+            background: white;
+            padding: 0.125rem 0.25rem;
+            border-radius: 2px;
+        }
+
+        /* Spacing Calculator */
+        .calculator {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--neutral-200);
+        }
+
+        .calc-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 700px) {
+            .calc-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .calc-cell {
+            aspect-ratio: 1;
+            background: var(--neutral-100);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--neutral-500);
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+        }
+
+        .calc-cell:hover {
+            background: var(--neutral-200);
+        }
+
+        .calc-cell.selected {
+            background: var(--css-navy);
+            color: white;
+            border-color: var(--css-sky);
+        }
+
+        .calc-result {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            padding: 1.5rem;
+            background: var(--neutral-50);
+            border-radius: 12px;
+        }
+
+        .calc-result-item {
+            text-align: center;
+        }
+
+        .calc-result-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--css-navy);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .calc-result-label {
+            font-size: 0.75rem;
+            color: var(--neutral-500);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .calc-preview {
+            margin-top: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .calc-preview-box {
+            background: linear-gradient(135deg, var(--css-navy), var(--css-sky));
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        /* Visual Guide */
+        .visual-guide {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--neutral-200);
+        }
+
+        .guide-demo {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            padding: 2rem;
+            background: var(--neutral-50);
+            border-radius: 12px;
+        }
+
+        .guide-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .guide-label {
+            width: 120px;
+            font-size: 0.8rem;
+            color: var(--neutral-500);
+        }
+
+        .guide-boxes {
+            display: flex;
+            gap: 8px;
+        }
+
+        .guide-box {
+            width: 48px;
+            height: 48px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid var(--neutral-200);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--neutral-200);
+            color: var(--neutral-400);
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav">
+            <a href="index.html" class="nav-brand">
+                <div class="nav-logo">
+                    <svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg"><path fill="#356a9d" d="M341.23,201.61l12.87,61.68c0,25.08-13.36,50.32-31.21,67.87C279,374.42,227.21,415.69,203.53,491.37V213.1a40.21,40.21,0,0,1,40.21-40.21h72A9,9,0,0,1,323,176.6Z"/><path fill="#356a9d" d="M796.47,213.06V511.59c-18.81-76-52.18-131.85-78.39-133.92-15.35-1.22-23.71-17.76-38,49.26L592.14,210.48c-.38-7.14-.88-16.7-1.52-27.35a9.71,9.71,0,0,1,9.68-10.24h156A40.15,40.15,0,0,1,796.47,213.06Z"/><path fill="#356a9d" d="M796.47,703.51V786.9a40.19,40.19,0,0,1-40.17,40.21H691.86C740.91,802.71,777.57,763.68,796.47,703.51Z"/><path fill="#356a9d" d="M679,575.44s0,0,0,.1c-4.29,37-21.19,66.16-45,87l0,0c-38.14,7-112,15.17-159.91-14.87-1.4-.87-2.75-1.74-4-2.65-1.75-1.2-3.43-2.44-5.06-3.7-99.69-73.15-23.63-213.55,2.51-247.55v-.05c.67-.92,1.35-1.73,2-2.5C482,376.19,494.49,361.75,506.53,348c.72-.87,1.35-1.59,1.83-2.12a4.91,4.91,0,0,0,.48-.58l.14-.14a4.09,4.09,0,0,1,.39-.48C537.11,312.73,562,284.51,578.9,261c42.23,95.24,91.82,235.84,91.82,235.84C679.44,526,681.7,552.23,679,575.44Z"/><path fill="#356a9d" d="M346.24,827.11H243.74a40.23,40.23,0,0,1-40.21-40.21V655.35C224.92,718.69,272.7,786.77,346.24,827.11Z"/><path fill="#1d2f5d" d="M679,575.54c-4.29,37-21.19,66.16-45,87l0,0c-73.48,64.29-212.59,49.12-249.09-63.79-23.21-71.61,20.66-130.83,75.79-197,.63-.77,3.13-3.71,6.79-7.94v-.05c10.88-12.71,31.44-36.79,39.10-45.79.72-.87,1.35-1.59,1.83-2.12-108,128.81-106.53,252.74-27.46,296.33C574.59,693.83,666.41,639.65,679,575.54Z"/></svg>
+                </div>
+                <span class="nav-title">Design System</span>
+            </a>
+            <a href="index.html" class="nav-back">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back to Index
+            </a>
+        </nav>
+
+        <header>
+            <h1>Spacing Scale</h1>
+            <p class="subtitle">Visual spacing scale based on 4px unit with semantic tokens</p>
+        </header>
+
+        <!-- Info Box -->
+        <div class="info-box">
+            <h3>Exponential Spacing Scale</h3>
+            <p>
+                Following Refactoring UI principles, this spacing scale uses a <code>4px</code> base unit
+                with exponential growth. Smaller values are tightly packed for fine adjustments,
+                while larger values grow quickly for layout spacing. This creates visual rhythm
+                without overwhelming choice.
+            </p>
+        </div>
+
+        <!-- Core Spacing Scale -->
+        <section class="section">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Core Scale</h2>
+                    <p class="section-description">35+ spacing values from 0 to 384px</p>
+                </div>
+            </div>
+
+            <div class="spacing-visual">
+                <div class="spacing-row">
+                    <span class="spacing-token">0</span>
+                    <span class="spacing-value">0px</span>
+                    <div class="spacing-bar-container">
+                        <div class="spacing-bar" style="width: 0;"></div>
+                    </div>
+                    <span class="spacing-desc">No spacing</span>
+                </div>
+                <div class="spacing-row">
+                    <span class="spacing-token">px</span>
+                    <span class="spacing-value">1px</span>
+                    <div class="spacing-bar-container">
+                        <div class="spacing-bar" style="width: 1px;"></div>
+                    </div>
+                    <span class="spacing-desc">Hairline borders</span>
+                </div>
+                <div class="spacing-row">
+                    <span class="spacing-token">0.5</span>
+                    <span class="spacing-value">2px</span>
+                    <div class="spacing-bar-container">
+                        <div class="spacing-bar" style="width: 2px;"></div>
+                    </div>
+                    <span class="spacing-desc">Micro spacing</span>
+                </div>
+                <div class="spacing-row">
+                    <span class="spacing-token">1</span>
+                    <span class="spacing-value">4px</span>
+                    <div class="spacing-bar-container">
+                        <div class="spacing-bar" style="width: 4px;"></div>
+                    </div>
+                    <span class="spacing-desc">Tiny tweaks, icon gaps</span>
+                </div>
+                <div class="spacing-row">
+                    <span class="spacing-token">1.5</span>
+                    <span class="spacing-value">6px</span>
+                    <div class="spacing-bar-container">
+                        <div class="spacing-bar" style="width: 6px;"></div>
+                    </div>
+                    <span class="spacing-desc">Tight inline spacing</span>
+                </div>
+                <div class="spacing-row">
+                    <span class="spacing-token">2</span>
+                    <span class="spacing-value">8px</span>
+                    <div class="spacing-bar-container">
+                        <div class="spacing-bar" style="width: 8px;"></div>
+                    </div>
+                    <span class="spacing-desc">Tight padding, inline</span>
+                </div>
+                <div class="spacing-row">
+                    <span class="spacing-token">3</span>
+                    <span class="spacing-value">12px</span>
+                    <div class="spacing-bar-container">
+                        <div class="spacing-bar" style="width: 12px;"></div>
+                    </div>
+                    <span class="spacing-desc">Small padding</span>
+                </div>
+                <div class="spacing-row">
+                    <span class="spacing-token">4</span>
+                    <span class="spacing-value">16px</span>
+                    <div class="spacing-bar-container">
+                        <div class="spacing-bar" style="width: 16px;"></div>
+                    </div>
+                    <span class="spacing-desc">Base unit - default padding</span>
+                </div>
+                <div class="spacing-row">
+                    <span class="spacing-token">5</span>
+                    <span class="spacing-value">20px</span>
+                    <div class="spacing-bar-container">
+                        <div class="spacing-bar" style="width: 20px;"></div>
+                    </div>
+                    <span class="spacing-desc">Medium padding</span>
+                </div>
+                <div class="spacing-row">
+                    <span class="spacing-token">6</span>
+                    <span class="spacing-value">24px</span>
+                    <div class="spacing-bar-container">
+                        <div class="spacing-bar" style="width: 24px;"></div>
+                    </div>
+                    <span class="spacing-desc">Component padding</span>
+                </div>
+                <div class="spacing-row">
+                    <span class="spacing-token">8</span>
+                    <span class="spacing-value">32px</span>
+                    <div class="spacing-bar-container">
+                        <div class="spacing-bar" style="width: 32px;"></div>
+                    </div>
+                    <span class="spacing-desc">Large gaps between elements</span>
+                </div>
+                <div class="spacing-row">
+                    <span class="spacing-token">10</span>
+                    <span class="spacing-value">40px</span>
+                    <div class="spacing-bar-container">
+                        <div class="spacing-bar" style="width: 40px;"></div>
+                    </div>
+                    <span class="spacing-desc">Content separation</span>
+                </div>
+                <div class="spacing-row">
+                    <span class="spacing-token">12</span>
+                    <span class="spacing-value">48px</span>
+                    <div class="spacing-bar-container">
+                        <div class="spacing-bar" style="width: 48px;"></div>
+                    </div>
+                    <span class="spacing-desc">Large section padding</span>
+                </div>
+                <div class="spacing-row">
+                    <span class="spacing-token">16</span>
+                    <span class="spacing-value">64px</span>
+                    <div class="spacing-bar-container">
+                        <div class="spacing-bar" style="width: 64px;"></div>
+                    </div>
+                    <span class="spacing-desc">Section spacing</span>
+                </div>
+                <div class="spacing-row">
+                    <span class="spacing-token">20</span>
+                    <span class="spacing-value">80px</span>
+                    <div class="spacing-bar-container">
+                        <div class="spacing-bar" style="width: 80px;"></div>
+                    </div>
+                    <span class="spacing-desc">Large section breaks</span>
+                </div>
+                <div class="spacing-row">
+                    <span class="spacing-token">24</span>
+                    <span class="spacing-value">96px</span>
+                    <div class="spacing-bar-container">
+                        <div class="spacing-bar" style="width: 96px;"></div>
+                    </div>
+                    <span class="spacing-desc">Page section gaps</span>
+                </div>
+                <div class="spacing-row">
+                    <span class="spacing-token">32</span>
+                    <span class="spacing-value">128px</span>
+                    <div class="spacing-bar-container">
+                        <div class="spacing-bar" style="width: 128px;"></div>
+                    </div>
+                    <span class="spacing-desc">Hero/feature spacing</span>
+                </div>
+                <div class="spacing-row">
+                    <span class="spacing-token">40</span>
+                    <span class="spacing-value">160px</span>
+                    <div class="spacing-bar-container">
+                        <div class="spacing-bar" style="width: 160px;"></div>
+                    </div>
+                    <span class="spacing-desc">Page-level spacing</span>
+                </div>
+                <div class="spacing-row">
+                    <span class="spacing-token">64</span>
+                    <span class="spacing-value">256px</span>
+                    <div class="spacing-bar-container">
+                        <div class="spacing-bar" style="width: 256px;"></div>
+                    </div>
+                    <span class="spacing-desc">Sidebar widths</span>
+                </div>
+                <div class="spacing-row">
+                    <span class="spacing-token">80</span>
+                    <span class="spacing-value">320px</span>
+                    <div class="spacing-bar-container">
+                        <div class="spacing-bar" style="width: 320px;"></div>
+                    </div>
+                    <span class="spacing-desc">Mobile breakpoint</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Semantic Spacing -->
+        <section class="section">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Semantic Spacing</h2>
+                    <p class="section-description">Named spacing tokens for consistent usage</p>
+                </div>
+            </div>
+
+            <div class="semantic-spacing">
+                <div class="semantic-card">
+                    <div class="semantic-visual">
+                        <div class="semantic-box" style="width: 4px; height: 4px;"></div>
+                    </div>
+                    <div class="semantic-name">xs</div>
+                    <div class="semantic-value">4px / 0.25rem</div>
+                </div>
+                <div class="semantic-card">
+                    <div class="semantic-visual">
+                        <div class="semantic-box" style="width: 8px; height: 8px;"></div>
+                    </div>
+                    <div class="semantic-name">sm</div>
+                    <div class="semantic-value">8px / 0.5rem</div>
+                </div>
+                <div class="semantic-card">
+                    <div class="semantic-visual">
+                        <div class="semantic-box" style="width: 16px; height: 16px;"></div>
+                    </div>
+                    <div class="semantic-name">md</div>
+                    <div class="semantic-value">16px / 1rem</div>
+                </div>
+                <div class="semantic-card">
+                    <div class="semantic-visual">
+                        <div class="semantic-box" style="width: 24px; height: 24px;"></div>
+                    </div>
+                    <div class="semantic-name">lg</div>
+                    <div class="semantic-value">24px / 1.5rem</div>
+                </div>
+                <div class="semantic-card">
+                    <div class="semantic-visual">
+                        <div class="semantic-box" style="width: 32px; height: 32px;"></div>
+                    </div>
+                    <div class="semantic-name">xl</div>
+                    <div class="semantic-value">32px / 2rem</div>
+                </div>
+                <div class="semantic-card">
+                    <div class="semantic-visual">
+                        <div class="semantic-box" style="width: 48px; height: 48px;"></div>
+                    </div>
+                    <div class="semantic-name">2xl</div>
+                    <div class="semantic-value">48px / 3rem</div>
+                </div>
+                <div class="semantic-card">
+                    <div class="semantic-visual">
+                        <div class="semantic-box" style="width: 60px; height: 60px;"></div>
+                    </div>
+                    <div class="semantic-name">3xl</div>
+                    <div class="semantic-value">64px / 4rem</div>
+                </div>
+                <div class="semantic-card">
+                    <div class="semantic-visual">
+                        <div class="semantic-box" style="width: 60px; height: 60px;"></div>
+                    </div>
+                    <div class="semantic-name">4xl</div>
+                    <div class="semantic-value">96px / 6rem</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Component Spacing -->
+        <section class="section">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Component Spacing</h2>
+                    <p class="section-description">Pre-defined spacing for common components</p>
+                </div>
+            </div>
+
+            <div class="component-spacing">
+                <div class="component-grid">
+                    <div class="component-item">
+                        <div class="component-header">
+                            <span class="component-name">Button Padding</span>
+                            <span class="component-value">8px × 16px</span>
+                        </div>
+                        <div class="component-demo">
+                            <button class="demo-button">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                                Button Text
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="component-item">
+                        <div class="component-header">
+                            <span class="component-name">Input Padding</span>
+                            <span class="component-value">8px × 12px</span>
+                        </div>
+                        <div class="component-demo">
+                            <input class="demo-input" type="text" placeholder="Enter text..." />
+                        </div>
+                    </div>
+
+                    <div class="component-item">
+                        <div class="component-header">
+                            <span class="component-name">Card Padding</span>
+                            <span class="component-value">24px</span>
+                        </div>
+                        <div class="component-demo">
+                            <div class="demo-card">
+                                <h4>Card Title</h4>
+                                <p>Card content with proper internal spacing.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="component-item">
+                        <div class="component-header">
+                            <span class="component-name">Form Gap</span>
+                            <span class="component-value">16px</span>
+                        </div>
+                        <div class="component-demo" style="display: flex; flex-direction: column; gap: 16px;">
+                            <input class="demo-input" type="text" placeholder="First name" />
+                            <input class="demo-input" type="text" placeholder="Last name" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Calculator -->
+        <section class="section">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Spacing Calculator</h2>
+                    <p class="section-description">Click a value to see its properties</p>
+                </div>
+            </div>
+
+            <div class="calculator">
+                <div class="calc-grid">
+                    <div class="calc-cell" onclick="selectSpacing(0, 0)">0</div>
+                    <div class="calc-cell" onclick="selectSpacing(1, 1)">px</div>
+                    <div class="calc-cell" onclick="selectSpacing(0.5, 2)">0.5</div>
+                    <div class="calc-cell" onclick="selectSpacing(1, 4)">1</div>
+                    <div class="calc-cell" onclick="selectSpacing(1.5, 6)">1.5</div>
+                    <div class="calc-cell" onclick="selectSpacing(2, 8)">2</div>
+                    <div class="calc-cell" onclick="selectSpacing(3, 12)">3</div>
+                    <div class="calc-cell selected" onclick="selectSpacing(4, 16)">4</div>
+                    <div class="calc-cell" onclick="selectSpacing(5, 20)">5</div>
+                    <div class="calc-cell" onclick="selectSpacing(6, 24)">6</div>
+                    <div class="calc-cell" onclick="selectSpacing(8, 32)">8</div>
+                    <div class="calc-cell" onclick="selectSpacing(10, 40)">10</div>
+                    <div class="calc-cell" onclick="selectSpacing(12, 48)">12</div>
+                    <div class="calc-cell" onclick="selectSpacing(16, 64)">16</div>
+                    <div class="calc-cell" onclick="selectSpacing(20, 80)">20</div>
+                    <div class="calc-cell" onclick="selectSpacing(24, 96)">24</div>
+                </div>
+
+                <div class="calc-result">
+                    <div class="calc-result-item">
+                        <div class="calc-result-value" id="calc-px">16px</div>
+                        <div class="calc-result-label">Pixels</div>
+                    </div>
+                    <div class="calc-result-item">
+                        <div class="calc-result-value" id="calc-rem">1rem</div>
+                        <div class="calc-result-label">REM</div>
+                    </div>
+                    <div class="calc-result-item">
+                        <div class="calc-result-value" id="calc-token">space-4</div>
+                        <div class="calc-result-label">Token</div>
+                    </div>
+                </div>
+
+                <div class="calc-preview">
+                    <div class="calc-preview-box" id="calc-preview" style="width: 16px; height: 16px;"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Visual Guide -->
+        <section class="section">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Visual Spacing Guide</h2>
+                    <p class="section-description">Consistent gaps create visual rhythm</p>
+                </div>
+            </div>
+
+            <div class="visual-guide">
+                <div class="guide-demo">
+                    <div class="guide-row">
+                        <span class="guide-label">Tight (8px)</span>
+                        <div class="guide-boxes" style="gap: 8px;">
+                            <div class="guide-box"></div>
+                            <div class="guide-box"></div>
+                            <div class="guide-box"></div>
+                            <div class="guide-box"></div>
+                        </div>
+                    </div>
+                    <div class="guide-row">
+                        <span class="guide-label">Normal (16px)</span>
+                        <div class="guide-boxes" style="gap: 16px;">
+                            <div class="guide-box"></div>
+                            <div class="guide-box"></div>
+                            <div class="guide-box"></div>
+                            <div class="guide-box"></div>
+                        </div>
+                    </div>
+                    <div class="guide-row">
+                        <span class="guide-label">Relaxed (24px)</span>
+                        <div class="guide-boxes" style="gap: 24px;">
+                            <div class="guide-box"></div>
+                            <div class="guide-box"></div>
+                            <div class="guide-box"></div>
+                            <div class="guide-box"></div>
+                        </div>
+                    </div>
+                    <div class="guide-row">
+                        <span class="guide-label">Loose (32px)</span>
+                        <div class="guide-boxes" style="gap: 32px;">
+                            <div class="guide-box"></div>
+                            <div class="guide-box"></div>
+                            <div class="guide-box"></div>
+                            <div class="guide-box"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>CSS Design System - Spacing Reference</p>
+            <p style="margin-top: 0.5rem;">Based on 4px unit with exponential growth</p>
+        </footer>
+    </div>
+
+    <script>
+        function selectSpacing(token, px) {
+            // Update selection
+            document.querySelectorAll('.calc-cell').forEach(cell => {
+                cell.classList.remove('selected');
+            });
+            event.target.classList.add('selected');
+
+            // Update results
+            document.getElementById('calc-px').textContent = px + 'px';
+            document.getElementById('calc-rem').textContent = (px / 16) + 'rem';
+            document.getElementById('calc-token').textContent = 'space-' + token;
+
+            // Update preview
+            const preview = document.getElementById('calc-preview');
+            const size = Math.min(px, 120);
+            preview.style.width = size + 'px';
+            preview.style.height = size + 'px';
+        }
+    </script>
+</body>
+</html>

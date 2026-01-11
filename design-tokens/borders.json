@@ -1,0 +1,57 @@
+{
+  "$schema": "https://design-tokens.json-schema.org/",
+  "name": "CSS Design System Borders",
+  "description": "Border radius and border width tokens",
+
+  "borderRadius": {
+    "none": { "value": "0px", "description": "No rounding" },
+    "sm": { "value": "2px", "description": "Subtle rounding for small elements" },
+    "md": { "value": "4px", "description": "Default rounding for inputs, buttons" },
+    "lg": { "value": "8px", "description": "Larger rounding for cards" },
+    "xl": { "value": "12px", "description": "Extra large rounding" },
+    "2xl": { "value": "16px", "description": "Prominent rounding for modals" },
+    "3xl": { "value": "24px", "description": "Very large rounding" },
+    "full": { "value": "9999px", "description": "Pill shape, circular avatars" }
+  },
+
+  "borderWidth": {
+    "0": { "value": "0px", "description": "No border" },
+    "1": { "value": "1px", "description": "Default border width" },
+    "2": { "value": "2px", "description": "Medium emphasis border" },
+    "4": { "value": "4px", "description": "Heavy emphasis border" },
+    "8": { "value": "8px", "description": "Decorative/accent border" }
+  },
+
+  "borderStyle": {
+    "solid": { "value": "solid", "description": "Default solid border" },
+    "dashed": { "value": "dashed", "description": "Dashed border for drop zones" },
+    "dotted": { "value": "dotted", "description": "Dotted border for subtle separation" },
+    "none": { "value": "none", "description": "No border" }
+  },
+
+  "divider": {
+    "horizontal": {
+      "value": "1px solid var(--border-default)",
+      "description": "Horizontal divider line"
+    },
+    "vertical": {
+      "value": "1px solid var(--border-default)",
+      "description": "Vertical divider line"
+    }
+  },
+
+  "focus": {
+    "ring": {
+      "width": "3px",
+      "style": "solid",
+      "color": "var(--color-primary-500)",
+      "offset": "2px",
+      "description": "Focus ring for accessibility"
+    },
+    "outline": {
+      "value": "3px solid var(--color-primary-500)",
+      "offset": "2px",
+      "description": "Alternative focus outline"
+    }
+  }
+}

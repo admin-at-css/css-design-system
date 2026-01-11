@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Component Showcase - CSS Design System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --css-navy: #1b2a53;
+            --css-sky: #356a9d;
+            --neutral-50: #f8fafc;
+            --neutral-100: #f1f5f9;
+            --neutral-200: #e2e8f0;
+            --neutral-300: #cbd5e1;
+            --neutral-400: #94a3b8;
+            --neutral-500: #64748b;
+            --neutral-600: #475569;
+            --neutral-700: #334155;
+            --neutral-800: #1e293b;
+            --neutral-900: #0f172a;
+
+            --success-50: #f0fdf4;
+            --success-500: #22c55e;
+            --success-600: #16a34a;
+            --error-50: #fef2f2;
+            --error-500: #ef4444;
+            --error-600: #dc2626;
+            --warning-50: #fffbeb;
+            --warning-500: #f59e0b;
+            --warning-600: #d97706;
+            --info-50: #eff6ff;
+            --info-500: #3b82f6;
+            --info-600: #2563eb;
+
+            --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--neutral-50);
+            color: var(--neutral-800);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Navigation */
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--neutral-200);
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--css-navy);
+        }
+
+        .nav-logo {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-logo svg {
+            width: 40px;
+            height: 40px;
+        }
+
+        .nav-title {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .nav-back {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--neutral-500);
+            text-decoration: none;
+            font-size: 0.875rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .nav-back:hover {
+            background: var(--neutral-100);
+            color: var(--neutral-700);
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--css-navy);
+            letter-spacing: -0.025em;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--neutral-500);
+            font-size: 1.1rem;
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--css-navy);
+        }
+
+        .section-description {
+            color: var(--neutral-500);
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+
+        /* Component Card */
+        .component-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--neutral-200);
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+
+        .component-header {
+            padding: 1rem 1.5rem;
+            background: var(--neutral-50);
+            border-bottom: 1px solid var(--neutral-200);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .component-name {
+            font-weight: 600;
+            color: var(--neutral-800);
+        }
+
+        .component-tag {
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            background: var(--neutral-200);
+            color: var(--neutral-600);
+        }
+
+        .component-tag.atom { background: #dbeafe; color: #1d4ed8; }
+        .component-tag.molecule { background: #f3e8ff; color: #7c3aed; }
+
+        .component-preview {
+            padding: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .component-preview.dark {
+            background: var(--neutral-900);
+        }
+
+        .component-preview.column {
+            flex-direction: column;
+            align-items: stretch;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 8px 16px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .btn:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgb(59 130 246 / 0.5);
+        }
+
+        .btn-primary {
+            background: var(--css-navy);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #152243;
+        }
+
+        .btn-secondary {
+            background: var(--neutral-100);
+            color: var(--neutral-700);
+        }
+
+        .btn-secondary:hover {
+            background: var(--neutral-200);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--neutral-300);
+            color: var(--neutral-700);
+        }
+
+        .btn-outline:hover {
+            background: var(--neutral-50);
+            border-color: var(--neutral-400);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--neutral-600);
+        }
+
+        .btn-ghost:hover {
+            background: var(--neutral-100);
+        }
+
+        .btn-destructive {
+            background: var(--error-600);
+            color: white;
+        }
+
+        .btn-destructive:hover {
+            background: #b91c1c;
+        }
+
+        .btn-link {
+            background: transparent;
+            color: var(--info-600);
+            padding: 0;
+        }
+
+        .btn-link:hover {
+            text-decoration: underline;
+        }
+
+        .btn-sm {
+            padding: 6px 12px;
+            font-size: 0.8rem;
+        }
+
+        .btn-lg {
+            padding: 12px 24px;
+            font-size: 1rem;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn-icon {
+            padding: 8px;
+        }
+
+        /* Inputs */
+        .input {
+            display: block;
+            width: 100%;
+            padding: 8px 12px;
+            font-size: 0.875rem;
+            border: 1px solid var(--neutral-300);
+            border-radius: 6px;
+            background: white;
+            color: var(--neutral-800);
+            transition: all 0.2s;
+        }
+
+        .input:focus {
+            outline: none;
+            border-color: var(--info-500);
+            box-shadow: 0 0 0 3px rgb(59 130 246 / 0.2);
+        }
+
+        .input:disabled {
+            background: var(--neutral-100);
+            cursor: not-allowed;
+        }
+
+        .input.error {
+            border-color: var(--error-500);
+        }
+
+        .input.error:focus {
+            box-shadow: 0 0 0 3px rgb(239 68 68 / 0.2);
+        }
+
+        .input.success {
+            border-color: var(--success-500);
+        }
+
+        .input-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--neutral-400);
+            pointer-events: none;
+        }
+
+        .input-with-icon {
+            padding-left: 40px;
+        }
+
+        /* Form Field */
+        .form-field {
+            margin-bottom: 1rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--neutral-700);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-error {
+            font-size: 0.8rem;
+            color: var(--error-500);
+            margin-top: 0.5rem;
+        }
+
+        .form-hint {
+            font-size: 0.8rem;
+            color: var(--neutral-500);
+            margin-top: 0.5rem;
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 2px 8px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border-radius: 100px;
+            gap: 4px;
+        }
+
+        .badge-default {
+            background: var(--neutral-100);
+            color: var(--neutral-700);
+        }
+
+        .badge-primary {
+            background: var(--css-navy);
+            color: white;
+        }
+
+        .badge-secondary {
+            background: var(--neutral-200);
+            color: var(--neutral-600);
+        }
+
+        .badge-success {
+            background: var(--success-50);
+            color: var(--success-600);
+        }
+
+        .badge-warning {
+            background: var(--warning-50);
+            color: var(--warning-600);
+        }
+
+        .badge-error {
+            background: var(--error-50);
+            color: var(--error-600);
+        }
+
+        .badge-info {
+            background: var(--info-50);
+            color: var(--info-600);
+        }
+
+        .badge-outline {
+            background: transparent;
+            border: 1px solid var(--neutral-300);
+            color: var(--neutral-600);
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 12px;
+            border: 1px solid var(--neutral-200);
+            overflow: hidden;
+        }
+
+        .card-header {
+            padding: 1.5rem 1.5rem 0;
+        }
+
+        .card-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--neutral-800);
+        }
+
+        .card-description {
+            font-size: 0.875rem;
+            color: var(--neutral-500);
+            margin-top: 0.25rem;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-footer {
+            padding: 0 1.5rem 1.5rem;
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        /* Alerts */
+        .alert {
+            padding: 1rem;
+            border-radius: 8px;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+        }
+
+        .alert-icon {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+        }
+
+        .alert-content {
+            flex: 1;
+        }
+
+        .alert-title {
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .alert-description {
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+
+        .alert-info {
+            background: var(--info-50);
+            color: var(--info-600);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .alert-success {
+            background: var(--success-50);
+            color: var(--success-600);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+        }
+
+        .alert-warning {
+            background: var(--warning-50);
+            color: var(--warning-600);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+
+        .alert-error {
+            background: var(--error-50);
+            color: var(--error-600);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        /* Avatar */
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 100%;
+            background: var(--css-navy);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        .avatar-sm { width: 32px; height: 32px; font-size: 0.75rem; }
+        .avatar-lg { width: 56px; height: 56px; font-size: 1.125rem; }
+        .avatar-xl { width: 72px; height: 72px; font-size: 1.5rem; }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 100%;
+        }
+
+        /* Checkbox & Radio */
+        .checkbox-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+
+        .checkbox {
+            width: 18px;
+            height: 18px;
+            border: 2px solid var(--neutral-300);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .checkbox.checked {
+            background: var(--css-navy);
+            border-color: var(--css-navy);
+        }
+
+        .checkbox.checked svg {
+            color: white;
+        }
+
+        .radio {
+            width: 18px;
+            height: 18px;
+            border: 2px solid var(--neutral-300);
+            border-radius: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .radio.checked {
+            border-color: var(--css-navy);
+        }
+
+        .radio.checked::after {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: var(--css-navy);
+            border-radius: 100%;
+        }
+
+        .checkbox-label, .radio-label {
+            font-size: 0.875rem;
+            color: var(--neutral-700);
+        }
+
+        /* Switch */
+        .switch {
+            width: 44px;
+            height: 24px;
+            background: var(--neutral-300);
+            border-radius: 100px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .switch::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 100%;
+            top: 2px;
+            left: 2px;
+            transition: all 0.2s;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+
+        .switch.on {
+            background: var(--css-navy);
+        }
+
+        .switch.on::after {
+            left: 22px;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid var(--neutral-200);
+        }
+
+        .tab {
+            padding: 0.75rem 1rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--neutral-500);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -1px;
+            transition: all 0.2s;
+        }
+
+        .tab:hover {
+            color: var(--neutral-700);
+        }
+
+        .tab.active {
+            color: var(--css-navy);
+            border-bottom-color: var(--css-navy);
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .breadcrumb-item {
+            color: var(--neutral-500);
+            text-decoration: none;
+        }
+
+        .breadcrumb-item:hover {
+            color: var(--neutral-700);
+        }
+
+        .breadcrumb-item.active {
+            color: var(--neutral-800);
+            font-weight: 500;
+        }
+
+        .breadcrumb-separator {
+            color: var(--neutral-300);
+        }
+
+        /* Tooltip Demo */
+        .tooltip-demo {
+            position: relative;
+            display: inline-block;
+        }
+
+        .tooltip {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 0.5rem 0.75rem;
+            background: var(--neutral-900);
+            color: white;
+            font-size: 0.75rem;
+            border-radius: 6px;
+            white-space: nowrap;
+            margin-bottom: 8px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s;
+        }
+
+        .tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 6px solid transparent;
+            border-top-color: var(--neutral-900);
+        }
+
+        .tooltip-demo:hover .tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Loading States */
+        .spinner {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--neutral-200);
+            border-top-color: var(--css-navy);
+            border-radius: 100%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .skeleton {
+            background: linear-gradient(90deg, var(--neutral-200) 25%, var(--neutral-100) 50%, var(--neutral-200) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: 4px;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* Progress */
+        .progress {
+            width: 100%;
+            height: 8px;
+            background: var(--neutral-200);
+            border-radius: 100px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--css-navy);
+            border-radius: 100px;
+            transition: width 0.3s ease;
+        }
+
+        /* Table Preview */
+        .table-preview {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+        }
+
+        .table-preview th,
+        .table-preview td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--neutral-200);
+        }
+
+        .table-preview th {
+            font-weight: 600;
+            color: var(--neutral-600);
+            background: var(--neutral-50);
+        }
+
+        .table-preview tr:hover td {
+            background: var(--neutral-50);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--neutral-200);
+            color: var(--neutral-400);
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav">
+            <a href="index.html" class="nav-brand">
+                <div class="nav-logo">
+                    <svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg"><path fill="#356a9d" d="M341.23,201.61l12.87,61.68c0,25.08-13.36,50.32-31.21,67.87C279,374.42,227.21,415.69,203.53,491.37V213.1a40.21,40.21,0,0,1,40.21-40.21h72A9,9,0,0,1,323,176.6Z"/><path fill="#356a9d" d="M796.47,213.06V511.59c-18.81-76-52.18-131.85-78.39-133.92-15.35-1.22-23.71-17.76-38,49.26L592.14,210.48c-.38-7.14-.88-16.7-1.52-27.35a9.71,9.71,0,0,1,9.68-10.24h156A40.15,40.15,0,0,1,796.47,213.06Z"/><path fill="#356a9d" d="M796.47,703.51V786.9a40.19,40.19,0,0,1-40.17,40.21H691.86C740.91,802.71,777.57,763.68,796.47,703.51Z"/><path fill="#356a9d" d="M679,575.44s0,0,0,.1c-4.29,37-21.19,66.16-45,87l0,0c-38.14,7-112,15.17-159.91-14.87-1.4-.87-2.75-1.74-4-2.65-1.75-1.2-3.43-2.44-5.06-3.7-99.69-73.15-23.63-213.55,2.51-247.55v-.05c.67-.92,1.35-1.73,2-2.5C482,376.19,494.49,361.75,506.53,348c.72-.87,1.35-1.59,1.83-2.12a4.91,4.91,0,0,0,.48-.58l.14-.14a4.09,4.09,0,0,1,.39-.48C537.11,312.73,562,284.51,578.9,261c42.23,95.24,91.82,235.84,91.82,235.84C679.44,526,681.7,552.23,679,575.44Z"/><path fill="#356a9d" d="M346.24,827.11H243.74a40.23,40.23,0,0,1-40.21-40.21V655.35C224.92,718.69,272.7,786.77,346.24,827.11Z"/><path fill="#1d2f5d" d="M679,575.54c-4.29,37-21.19,66.16-45,87l0,0c-73.48,64.29-212.59,49.12-249.09-63.79-23.21-71.61,20.66-130.83,75.79-197,.63-.77,3.13-3.71,6.79-7.94v-.05c10.88-12.71,31.44-36.79,39.10-45.79.72-.87,1.35-1.59,1.83-2.12-108,128.81-106.53,252.74-27.46,296.33C574.59,693.83,666.41,639.65,679,575.54Z"/></svg>
+                </div>
+                <span class="nav-title">Design System</span>
+            </a>
+            <a href="index.html" class="nav-back">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back to Index
+            </a>
+        </nav>
+
+        <header>
+            <h1>Component Showcase</h1>
+            <p class="subtitle">Interactive demos of buttons, inputs, badges, cards, and other components</p>
+        </header>
+
+        <!-- Buttons -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">Buttons</h2>
+                <p class="section-description">6 variants, 3 sizes, with icon support</p>
+            </div>
+
+            <div class="component-card">
+                <div class="component-header">
+                    <span class="component-name">Button Variants</span>
+                    <span class="component-tag atom">Atom</span>
+                </div>
+                <div class="component-preview">
+                    <button class="btn btn-primary">Primary</button>
+                    <button class="btn btn-secondary">Secondary</button>
+                    <button class="btn btn-outline">Outline</button>
+                    <button class="btn btn-ghost">Ghost</button>
+                    <button class="btn btn-destructive">Destructive</button>
+                    <button class="btn btn-link">Link</button>
+                </div>
+            </div>
+
+            <div class="component-card">
+                <div class="component-header">
+                    <span class="component-name">Button Sizes</span>
+                    <span class="component-tag atom">Atom</span>
+                </div>
+                <div class="component-preview">
+                    <button class="btn btn-primary btn-sm">Small</button>
+                    <button class="btn btn-primary">Default</button>
+                    <button class="btn btn-primary btn-lg">Large</button>
+                </div>
+            </div>
+
+            <div class="component-card">
+                <div class="component-header">
+                    <span class="component-name">Button with Icons</span>
+                    <span class="component-tag atom">Atom</span>
+                </div>
+                <div class="component-preview">
+                    <button class="btn btn-primary">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 5v14M5 12h14"/>
+                        </svg>
+                        Add Item
+                    </button>
+                    <button class="btn btn-outline">
+                        Download
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+                        </svg>
+                    </button>
+                    <button class="btn btn-secondary btn-icon" aria-label="Settings">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="3"/>
+                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                        </svg>
+                    </button>
+                    <button class="btn btn-primary" disabled>Disabled</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Inputs -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">Inputs</h2>
+                <p class="section-description">Text inputs with validation states and icons</p>
+            </div>
+
+            <div class="component-card">
+                <div class="component-header">
+                    <span class="component-name">Input States</span>
+                    <span class="component-tag atom">Atom</span>
+                </div>
+                <div class="component-preview column">
+                    <div class="form-field">
+                        <label class="form-label">Default Input</label>
+                        <input type="text" class="input" placeholder="Enter your name...">
+                    </div>
+                    <div class="form-field">
+                        <label class="form-label">With Icon</label>
+                        <div class="input-wrapper">
+                            <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"/>
+                                <path d="m21 21-4.35-4.35"/>
+                            </svg>
+                            <input type="text" class="input input-with-icon" placeholder="Search...">
+                        </div>
+                    </div>
+                    <div class="form-field">
+                        <label class="form-label">Error State</label>
+                        <input type="email" class="input error" value="invalid-email">
+                        <p class="form-error">Please enter a valid email address</p>
+                    </div>
+                    <div class="form-field">
+                        <label class="form-label">Success State</label>
+                        <input type="text" class="input success" value="Valid input">
+                    </div>
+                    <div class="form-field">
+                        <label class="form-label">Disabled</label>
+                        <input type="text" class="input" disabled value="Cannot edit">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Badges -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">Badges</h2>
+                <p class="section-description">Status indicators and labels</p>
+            </div>
+
+            <div class="component-card">
+                <div class="component-header">
+                    <span class="component-name">Badge Variants</span>
+                    <span class="component-tag atom">Atom</span>
+                </div>
+                <div class="component-preview">
+                    <span class="badge badge-default">Default</span>
+                    <span class="badge badge-primary">Primary</span>
+                    <span class="badge badge-secondary">Secondary</span>
+                    <span class="badge badge-success">Success</span>
+                    <span class="badge badge-warning">Warning</span>
+                    <span class="badge badge-error">Error</span>
+                    <span class="badge badge-info">Info</span>
+                    <span class="badge badge-outline">Outline</span>
+                </div>
+            </div>
+
+            <div class="component-card">
+                <div class="component-header">
+                    <span class="component-name">Badges with Icons</span>
+                    <span class="component-tag atom">Atom</span>
+                </div>
+                <div class="component-preview">
+                    <span class="badge badge-success">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        Completed
+                    </span>
+                    <span class="badge badge-warning">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                        Pending
+                    </span>
+                    <span class="badge badge-error">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="15" y1="9" x2="9" y2="15"/>
+                            <line x1="9" y1="9" x2="15" y2="15"/>
+                        </svg>
+                        Failed
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cards -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">Cards</h2>
+                <p class="section-description">Container components for grouped content</p>
+            </div>
+
+            <div class="component-card">
+                <div class="component-header">
+                    <span class="component-name">Card with Actions</span>
+                    <span class="component-tag molecule">Molecule</span>
+                </div>
+                <div class="component-preview">
+                    <div class="card" style="width: 320px;">
+                        <div class="card-header">
+                            <h3 class="card-title">Create Project</h3>
+                            <p class="card-description">Start a new project with templates</p>
+                        </div>
+                        <div class="card-content">
+                            <div class="form-field">
+                                <label class="form-label">Project Name</label>
+                                <input type="text" class="input" placeholder="my-awesome-project">
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-outline">Cancel</button>
+                            <button class="btn btn-primary">Create</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Alerts -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">Alerts</h2>
+                <p class="section-description">Contextual feedback messages</p>
+            </div>
+
+            <div class="component-card">
+                <div class="component-header">
+                    <span class="component-name">Alert Variants</span>
+                    <span class="component-tag molecule">Molecule</span>
+                </div>
+                <div class="component-preview column" style="max-width: 500px;">
+                    <div class="alert alert-info">
+                        <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="16" x2="12" y2="12"/>
+                            <line x1="12" y1="8" x2="12.01" y2="8"/>
+                        </svg>
+                        <div class="alert-content">
+                            <div class="alert-title">Information</div>
+                            <div class="alert-description">Your session will expire in 5 minutes.</div>
+                        </div>
+                    </div>
+                    <div class="alert alert-success">
+                        <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <path d="m22 4-10 10-3-3"/>
+                        </svg>
+                        <div class="alert-content">
+                            <div class="alert-title">Success</div>
+                            <div class="alert-description">Your changes have been saved successfully.</div>
+                        </div>
+                    </div>
+                    <div class="alert alert-warning">
+                        <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                            <line x1="12" y1="9" x2="12" y2="13"/>
+                            <line x1="12" y1="17" x2="12.01" y2="17"/>
+                        </svg>
+                        <div class="alert-content">
+                            <div class="alert-title">Warning</div>
+                            <div class="alert-description">Your account is approaching its storage limit.</div>
+                        </div>
+                    </div>
+                    <div class="alert alert-error">
+                        <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="15" y1="9" x2="9" y2="15"/>
+                            <line x1="9" y1="9" x2="15" y2="15"/>
+                        </svg>
+                        <div class="alert-content">
+                            <div class="alert-title">Error</div>
+                            <div class="alert-description">Failed to save changes. Please try again.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Form Controls -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">Form Controls</h2>
+                <p class="section-description">Checkboxes, radios, and switches</p>
+            </div>
+
+            <div class="component-card">
+                <div class="component-header">
+                    <span class="component-name">Selection Controls</span>
+                    <span class="component-tag atom">Atom</span>
+                </div>
+                <div class="component-preview" style="gap: 2rem;">
+                    <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                        <label class="checkbox-wrapper" onclick="this.querySelector('.checkbox').classList.toggle('checked')">
+                            <div class="checkbox">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="display: none;">
+                                    <path d="M20 6L9 17l-5-5"/>
+                                </svg>
+                            </div>
+                            <span class="checkbox-label">Option A</span>
+                        </label>
+                        <label class="checkbox-wrapper" onclick="this.querySelector('.checkbox').classList.toggle('checked')">
+                            <div class="checkbox checked">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                    <path d="M20 6L9 17l-5-5"/>
+                                </svg>
+                            </div>
+                            <span class="checkbox-label">Option B (checked)</span>
+                        </label>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                        <label class="checkbox-wrapper">
+                            <div class="radio checked"></div>
+                            <span class="radio-label">Radio A</span>
+                        </label>
+                        <label class="checkbox-wrapper">
+                            <div class="radio"></div>
+                            <span class="radio-label">Radio B</span>
+                        </label>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                        <div style="display: flex; align-items: center; gap: 0.75rem;">
+                            <div class="switch" onclick="this.classList.toggle('on')"></div>
+                            <span style="font-size: 0.875rem; color: var(--neutral-700);">Off</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.75rem;">
+                            <div class="switch on" onclick="this.classList.toggle('on')"></div>
+                            <span style="font-size: 0.875rem; color: var(--neutral-700);">On</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Avatars -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">Avatars</h2>
+                <p class="section-description">User profile images and initials</p>
+            </div>
+
+            <div class="component-card">
+                <div class="component-header">
+                    <span class="component-name">Avatar Sizes</span>
+                    <span class="component-tag atom">Atom</span>
+                </div>
+                <div class="component-preview">
+                    <div class="avatar avatar-sm">JD</div>
+                    <div class="avatar">JD</div>
+                    <div class="avatar avatar-lg">JD</div>
+                    <div class="avatar avatar-xl">JD</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tabs & Navigation -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">Navigation</h2>
+                <p class="section-description">Tabs and breadcrumbs</p>
+            </div>
+
+            <div class="component-card">
+                <div class="component-header">
+                    <span class="component-name">Tabs</span>
+                    <span class="component-tag molecule">Molecule</span>
+                </div>
+                <div class="component-preview" style="flex-direction: column; align-items: stretch;">
+                    <div class="tabs">
+                        <div class="tab active">Overview</div>
+                        <div class="tab">Analytics</div>
+                        <div class="tab">Reports</div>
+                        <div class="tab">Settings</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="component-card">
+                <div class="component-header">
+                    <span class="component-name">Breadcrumb</span>
+                    <span class="component-tag molecule">Molecule</span>
+                </div>
+                <div class="component-preview">
+                    <nav class="breadcrumb">
+                        <a href="#" class="breadcrumb-item">Home</a>
+                        <span class="breadcrumb-separator">/</span>
+                        <a href="#" class="breadcrumb-item">Products</a>
+                        <span class="breadcrumb-separator">/</span>
+                        <span class="breadcrumb-item active">Widget Pro</span>
+                    </nav>
+                </div>
+            </div>
+        </section>
+
+        <!-- Loading States -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">Loading States</h2>
+                <p class="section-description">Spinners, skeletons, and progress</p>
+            </div>
+
+            <div class="component-card">
+                <div class="component-header">
+                    <span class="component-name">Loading Indicators</span>
+                    <span class="component-tag atom">Atom</span>
+                </div>
+                <div class="component-preview" style="gap: 3rem;">
+                    <div style="text-align: center;">
+                        <div class="spinner"></div>
+                        <p style="font-size: 0.75rem; color: var(--neutral-500); margin-top: 0.5rem;">Spinner</p>
+                    </div>
+                    <div style="width: 200px;">
+                        <div class="skeleton" style="height: 16px; width: 60%; margin-bottom: 8px;"></div>
+                        <div class="skeleton" style="height: 12px; width: 100%; margin-bottom: 4px;"></div>
+                        <div class="skeleton" style="height: 12px; width: 80%;"></div>
+                        <p style="font-size: 0.75rem; color: var(--neutral-500); margin-top: 0.75rem; text-align: center;">Skeleton</p>
+                    </div>
+                    <div style="width: 200px;">
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 65%;"></div>
+                        </div>
+                        <p style="font-size: 0.75rem; color: var(--neutral-500); margin-top: 0.5rem; text-align: center;">Progress (65%)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tooltip -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">Tooltips</h2>
+                <p class="section-description">Hover to reveal additional information</p>
+            </div>
+
+            <div class="component-card">
+                <div class="component-header">
+                    <span class="component-name">Tooltip on Hover</span>
+                    <span class="component-tag atom">Atom</span>
+                </div>
+                <div class="component-preview">
+                    <div class="tooltip-demo">
+                        <button class="btn btn-primary">Hover me</button>
+                        <div class="tooltip">This is a tooltip!</div>
+                    </div>
+                    <div class="tooltip-demo">
+                        <button class="btn btn-outline">More info</button>
+                        <div class="tooltip">Additional context here</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Table Preview -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">Data Table</h2>
+                <p class="section-description">Structured data display</p>
+            </div>
+
+            <div class="component-card">
+                <div class="component-header">
+                    <span class="component-name">Table Preview</span>
+                    <span class="component-tag molecule">Molecule</span>
+                </div>
+                <div class="component-preview" style="display: block; padding: 0;">
+                    <table class="table-preview">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Status</th>
+                                <th>Role</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>John Doe</td>
+                                <td><span class="badge badge-success">Active</span></td>
+                                <td>Admin</td>
+                                <td><button class="btn btn-ghost btn-sm">Edit</button></td>
+                            </tr>
+                            <tr>
+                                <td>Jane Smith</td>
+                                <td><span class="badge badge-warning">Pending</span></td>
+                                <td>User</td>
+                                <td><button class="btn btn-ghost btn-sm">Edit</button></td>
+                            </tr>
+                            <tr>
+                                <td>Bob Wilson</td>
+                                <td><span class="badge badge-default">Inactive</span></td>
+                                <td>Viewer</td>
+                                <td><button class="btn btn-ghost btn-sm">Edit</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>CSS Design System - Component Showcase</p>
+            <p style="margin-top: 0.5rem;">28 components following atomic design methodology</p>
+        </footer>
+    </div>
+
+    <script>
+        // Make checkboxes interactive
+        document.querySelectorAll('.checkbox').forEach(checkbox => {
+            checkbox.addEventListener('click', function() {
+                this.classList.toggle('checked');
+                const svg = this.querySelector('svg');
+                if (svg) {
+                    svg.style.display = this.classList.contains('checked') ? 'block' : 'none';
+                }
+            });
+        });
+
+        // Make tabs interactive
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                this.parentElement.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typography Scale - CSS Design System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --css-navy: #1b2a53;
+            --css-sky: #356a9d;
+            --neutral-50: #f8fafc;
+            --neutral-100: #f1f5f9;
+            --neutral-200: #e2e8f0;
+            --neutral-300: #cbd5e1;
+            --neutral-400: #94a3b8;
+            --neutral-500: #64748b;
+            --neutral-600: #475569;
+            --neutral-700: #334155;
+            --neutral-800: #1e293b;
+            --neutral-900: #0f172a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--neutral-50);
+            color: var(--neutral-800);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Navigation */
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--neutral-200);
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--css-navy);
+        }
+
+        .nav-logo {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-logo svg {
+            width: 40px;
+            height: 40px;
+        }
+
+        .nav-title {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .nav-back {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--neutral-500);
+            text-decoration: none;
+            font-size: 0.875rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .nav-back:hover {
+            background: var(--neutral-100);
+            color: var(--neutral-700);
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--css-navy);
+            letter-spacing: -0.025em;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--neutral-500);
+            font-size: 1.1rem;
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--css-navy);
+        }
+
+        .section-description {
+            color: var(--neutral-500);
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+
+        /* Font Family Showcase */
+        .font-families {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        @media (max-width: 900px) {
+            .font-families {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .font-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--neutral-200);
+        }
+
+        .font-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--neutral-100);
+        }
+
+        .font-name {
+            font-weight: 700;
+            color: var(--css-navy);
+        }
+
+        .font-tag {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.25rem 0.75rem;
+            border-radius: 100px;
+            background: var(--neutral-100);
+            color: var(--neutral-500);
+        }
+
+        .font-preview {
+            font-size: 2rem;
+            color: var(--neutral-800);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .font-preview.sans { font-family: 'Inter', sans-serif; }
+        .font-preview.serif { font-family: Georgia, serif; }
+        .font-preview.mono { font-family: 'JetBrains Mono', monospace; }
+
+        .font-alphabet {
+            font-size: 0.875rem;
+            color: var(--neutral-400);
+            letter-spacing: 0.05em;
+        }
+
+        .font-alphabet.sans { font-family: 'Inter', sans-serif; }
+        .font-alphabet.serif { font-family: Georgia, serif; }
+        .font-alphabet.mono { font-family: 'JetBrains Mono', monospace; }
+
+        .font-stack {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--neutral-100);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--neutral-400);
+            word-break: break-all;
+        }
+
+        /* Type Scale */
+        .type-scale {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--neutral-200);
+        }
+
+        .scale-item {
+            display: grid;
+            grid-template-columns: 80px 100px 1fr;
+            align-items: baseline;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--neutral-100);
+            gap: 1.5rem;
+        }
+
+        .scale-item:last-child {
+            border-bottom: none;
+        }
+
+        .scale-token {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--css-sky);
+            font-weight: 500;
+        }
+
+        .scale-size {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--neutral-400);
+        }
+
+        .scale-preview {
+            color: var(--neutral-800);
+            line-height: 1.3;
+            transition: color 0.2s;
+        }
+
+        .scale-item:hover .scale-preview {
+            color: var(--css-navy);
+        }
+
+        /* Font Weights */
+        .weights-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        @media (max-width: 800px) {
+            .weights-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .weight-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--neutral-200);
+            text-align: center;
+        }
+
+        .weight-preview {
+            font-size: 3rem;
+            color: var(--neutral-800);
+            margin-bottom: 0.75rem;
+            line-height: 1;
+        }
+
+        .weight-name {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--neutral-700);
+            margin-bottom: 0.25rem;
+        }
+
+        .weight-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--neutral-400);
+        }
+
+        /* Line Heights */
+        .line-heights {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 700px) {
+            .line-heights {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .line-height-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--neutral-200);
+        }
+
+        .line-height-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .line-height-name {
+            font-weight: 600;
+            color: var(--neutral-700);
+        }
+
+        .line-height-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--css-sky);
+            background: var(--neutral-100);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .line-height-preview {
+            font-size: 0.875rem;
+            color: var(--neutral-600);
+            background: var(--neutral-50);
+            padding: 1rem;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .line-height-preview::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--css-sky);
+            border-radius: 3px 0 0 3px;
+        }
+
+        /* Text Styles */
+        .text-styles {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--neutral-200);
+        }
+
+        .style-item {
+            display: grid;
+            grid-template-columns: 150px 1fr auto;
+            align-items: center;
+            padding: 1.25rem 0;
+            border-bottom: 1px solid var(--neutral-100);
+            gap: 2rem;
+        }
+
+        .style-item:last-child {
+            border-bottom: none;
+        }
+
+        .style-name {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--css-sky);
+            font-weight: 500;
+        }
+
+        .style-preview {
+            color: var(--neutral-800);
+        }
+
+        .style-specs {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .style-spec {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            color: var(--neutral-400);
+            background: var(--neutral-100);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+
+        /* Letter Spacing */
+        .tracking-demo {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--neutral-200);
+        }
+
+        .tracking-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--neutral-100);
+            gap: 2rem;
+        }
+
+        .tracking-item:last-child {
+            border-bottom: none;
+        }
+
+        .tracking-label {
+            width: 100px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--css-sky);
+        }
+
+        .tracking-value {
+            width: 80px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--neutral-400);
+        }
+
+        .tracking-preview {
+            flex: 1;
+            font-size: 1.125rem;
+            color: var(--neutral-700);
+            text-transform: uppercase;
+        }
+
+        /* Live Editor */
+        .live-editor {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--neutral-200);
+        }
+
+        .editor-controls {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 800px) {
+            .editor-controls {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .control-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--neutral-500);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .control-select {
+            padding: 0.625rem 1rem;
+            border: 1px solid var(--neutral-200);
+            border-radius: 8px;
+            font-size: 0.875rem;
+            color: var(--neutral-700);
+            background: white;
+            cursor: pointer;
+        }
+
+        .control-select:focus {
+            outline: none;
+            border-color: var(--css-sky);
+            box-shadow: 0 0 0 3px rgba(53, 106, 157, 0.2);
+        }
+
+        .editor-preview {
+            background: var(--neutral-50);
+            border-radius: 12px;
+            padding: 2rem;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #preview-text {
+            text-align: center;
+            color: var(--neutral-800);
+            transition: all 0.3s ease;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--neutral-200);
+            color: var(--neutral-400);
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav">
+            <a href="index.html" class="nav-brand">
+                <div class="nav-logo">
+                    <svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg"><path fill="#356a9d" d="M341.23,201.61l12.87,61.68c0,25.08-13.36,50.32-31.21,67.87C279,374.42,227.21,415.69,203.53,491.37V213.1a40.21,40.21,0,0,1,40.21-40.21h72A9,9,0,0,1,323,176.6Z"/><path fill="#356a9d" d="M796.47,213.06V511.59c-18.81-76-52.18-131.85-78.39-133.92-15.35-1.22-23.71-17.76-38,49.26L592.14,210.48c-.38-7.14-.88-16.7-1.52-27.35a9.71,9.71,0,0,1,9.68-10.24h156A40.15,40.15,0,0,1,796.47,213.06Z"/><path fill="#356a9d" d="M796.47,703.51V786.9a40.19,40.19,0,0,1-40.17,40.21H691.86C740.91,802.71,777.57,763.68,796.47,703.51Z"/><path fill="#356a9d" d="M679,575.44s0,0,0,.1c-4.29,37-21.19,66.16-45,87l0,0c-38.14,7-112,15.17-159.91-14.87-1.4-.87-2.75-1.74-4-2.65-1.75-1.2-3.43-2.44-5.06-3.7-99.69-73.15-23.63-213.55,2.51-247.55v-.05c.67-.92,1.35-1.73,2-2.5C482,376.19,494.49,361.75,506.53,348c.72-.87,1.35-1.59,1.83-2.12a4.91,4.91,0,0,0,.48-.58l.14-.14a4.09,4.09,0,0,1,.39-.48C537.11,312.73,562,284.51,578.9,261c42.23,95.24,91.82,235.84,91.82,235.84C679.44,526,681.7,552.23,679,575.44Z"/><path fill="#356a9d" d="M346.24,827.11H243.74a40.23,40.23,0,0,1-40.21-40.21V655.35C224.92,718.69,272.7,786.77,346.24,827.11Z"/><path fill="#1d2f5d" d="M679,575.54c-4.29,37-21.19,66.16-45,87l0,0c-73.48,64.29-212.59,49.12-249.09-63.79-23.21-71.61,20.66-130.83,75.79-197,.63-.77,3.13-3.71,6.79-7.94v-.05c10.88-12.71,31.44-36.79,39.10-45.79.72-.87,1.35-1.59,1.83-2.12-108,128.81-106.53,252.74-27.46,296.33C574.59,693.83,666.41,639.65,679,575.54Z"/></svg>
+                </div>
+                <span class="nav-title">Design System</span>
+            </a>
+            <a href="index.html" class="nav-back">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back to Index
+            </a>
+        </nav>
+
+        <header>
+            <h1>Typography Scale</h1>
+            <p class="subtitle">Font sizes, weights, line heights, and pre-defined text styles</p>
+        </header>
+
+        <!-- Font Families -->
+        <section class="section">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Font Families</h2>
+                    <p class="section-description">Three font families for different content types</p>
+                </div>
+            </div>
+
+            <div class="font-families">
+                <div class="font-card">
+                    <div class="font-card-header">
+                        <span class="font-name">Inter</span>
+                        <span class="font-tag">Primary</span>
+                    </div>
+                    <div class="font-preview sans">The quick brown fox</div>
+                    <div class="font-alphabet sans">ABCDEFGHIJKLMNOPQRSTUVWXYZ</div>
+                    <div class="font-alphabet sans">abcdefghijklmnopqrstuvwxyz</div>
+                    <div class="font-alphabet sans">0123456789</div>
+                    <div class="font-stack">Inter, ui-sans-serif, system-ui, -apple-system, sans-serif</div>
+                </div>
+
+                <div class="font-card">
+                    <div class="font-card-header">
+                        <span class="font-name">Georgia</span>
+                        <span class="font-tag">Serif</span>
+                    </div>
+                    <div class="font-preview serif">The quick brown fox</div>
+                    <div class="font-alphabet serif">ABCDEFGHIJKLMNOPQRSTUVWXYZ</div>
+                    <div class="font-alphabet serif">abcdefghijklmnopqrstuvwxyz</div>
+                    <div class="font-alphabet serif">0123456789</div>
+                    <div class="font-stack">Georgia, Cambria, 'Times New Roman', Times, serif</div>
+                </div>
+
+                <div class="font-card">
+                    <div class="font-card-header">
+                        <span class="font-name">JetBrains Mono</span>
+                        <span class="font-tag">Mono</span>
+                    </div>
+                    <div class="font-preview mono">The quick brown fox</div>
+                    <div class="font-alphabet mono">ABCDEFGHIJKLMNOPQRSTUVWXYZ</div>
+                    <div class="font-alphabet mono">abcdefghijklmnopqrstuvwxyz</div>
+                    <div class="font-alphabet mono">0123456789</div>
+                    <div class="font-stack">'JetBrains Mono', 'Fira Code', ui-monospace, monospace</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Type Scale -->
+        <section class="section">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Font Size Scale</h2>
+                    <p class="section-description">11 hand-picked sizes from 12px to 72px</p>
+                </div>
+            </div>
+
+            <div class="type-scale">
+                <div class="scale-item">
+                    <span class="scale-token">text-7xl</span>
+                    <span class="scale-size">72px / 4.5rem</span>
+                    <span class="scale-preview" style="font-size: 72px; font-weight: 800; letter-spacing: -0.025em; line-height: 1;">Hero headlines</span>
+                </div>
+                <div class="scale-item">
+                    <span class="scale-token">text-6xl</span>
+                    <span class="scale-size">60px / 3.75rem</span>
+                    <span class="scale-preview" style="font-size: 60px; font-weight: 800; letter-spacing: -0.025em; line-height: 1;">Extra large display</span>
+                </div>
+                <div class="scale-item">
+                    <span class="scale-token">text-5xl</span>
+                    <span class="scale-size">48px / 3rem</span>
+                    <span class="scale-preview" style="font-size: 48px; font-weight: 700; letter-spacing: -0.025em; line-height: 1.1;">Large display text</span>
+                </div>
+                <div class="scale-item">
+                    <span class="scale-token">text-4xl</span>
+                    <span class="scale-size">36px / 2.25rem</span>
+                    <span class="scale-preview" style="font-size: 36px; font-weight: 700; letter-spacing: -0.025em; line-height: 1.2;">Page titles (h1)</span>
+                </div>
+                <div class="scale-item">
+                    <span class="scale-token">text-3xl</span>
+                    <span class="scale-size">30px / 1.875rem</span>
+                    <span class="scale-preview" style="font-size: 30px; font-weight: 600; letter-spacing: -0.025em; line-height: 1.25;">Section headers (h2)</span>
+                </div>
+                <div class="scale-item">
+                    <span class="scale-token">text-2xl</span>
+                    <span class="scale-size">24px / 1.5rem</span>
+                    <span class="scale-preview" style="font-size: 24px; font-weight: 600; line-height: 1.3;">Section headers (h3)</span>
+                </div>
+                <div class="scale-item">
+                    <span class="scale-token">text-xl</span>
+                    <span class="scale-size">20px / 1.25rem</span>
+                    <span class="scale-preview" style="font-size: 20px; font-weight: 600; line-height: 1.4;">Small headings, card titles</span>
+                </div>
+                <div class="scale-item">
+                    <span class="scale-token">text-lg</span>
+                    <span class="scale-size">18px / 1.125rem</span>
+                    <span class="scale-preview" style="font-size: 18px; line-height: 1.5;">Large body text for emphasis</span>
+                </div>
+                <div class="scale-item">
+                    <span class="scale-token">text-base</span>
+                    <span class="scale-size">16px / 1rem</span>
+                    <span class="scale-preview" style="font-size: 16px; line-height: 1.5;">Body copy (default size)</span>
+                </div>
+                <div class="scale-item">
+                    <span class="scale-token">text-sm</span>
+                    <span class="scale-size">14px / 0.875rem</span>
+                    <span class="scale-preview" style="font-size: 14px; line-height: 1.5;">Secondary text, captions</span>
+                </div>
+                <div class="scale-item">
+                    <span class="scale-token">text-xs</span>
+                    <span class="scale-size">12px / 0.75rem</span>
+                    <span class="scale-preview" style="font-size: 12px; line-height: 1.5;">Tertiary text, labels, badges</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Font Weights -->
+        <section class="section">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Font Weights</h2>
+                    <p class="section-description">6 weights from light to extra bold</p>
+                </div>
+            </div>
+
+            <div class="weights-grid">
+                <div class="weight-card">
+                    <div class="weight-preview" style="font-weight: 300;">Aa</div>
+                    <div class="weight-name">Light</div>
+                    <div class="weight-value">300</div>
+                </div>
+                <div class="weight-card">
+                    <div class="weight-preview" style="font-weight: 400;">Aa</div>
+                    <div class="weight-name">Normal</div>
+                    <div class="weight-value">400</div>
+                </div>
+                <div class="weight-card">
+                    <div class="weight-preview" style="font-weight: 500;">Aa</div>
+                    <div class="weight-name">Medium</div>
+                    <div class="weight-value">500</div>
+                </div>
+                <div class="weight-card">
+                    <div class="weight-preview" style="font-weight: 600;">Aa</div>
+                    <div class="weight-name">Semibold</div>
+                    <div class="weight-value">600</div>
+                </div>
+                <div class="weight-card">
+                    <div class="weight-preview" style="font-weight: 700;">Aa</div>
+                    <div class="weight-name">Bold</div>
+                    <div class="weight-value">700</div>
+                </div>
+                <div class="weight-card">
+                    <div class="weight-preview" style="font-weight: 800;">Aa</div>
+                    <div class="weight-name">Extrabold</div>
+                    <div class="weight-value">800</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Line Heights -->
+        <section class="section">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Line Heights</h2>
+                    <p class="section-description">6 line height options for different content</p>
+                </div>
+            </div>
+
+            <div class="line-heights">
+                <div class="line-height-card">
+                    <div class="line-height-header">
+                        <span class="line-height-name">None</span>
+                        <span class="line-height-value">1</span>
+                    </div>
+                    <div class="line-height-preview" style="line-height: 1;">
+                        Single-line text only. Use for large display headings where text won't wrap.
+                    </div>
+                </div>
+                <div class="line-height-card">
+                    <div class="line-height-header">
+                        <span class="line-height-name">Tight</span>
+                        <span class="line-height-value">1.25</span>
+                    </div>
+                    <div class="line-height-preview" style="line-height: 1.25;">
+                        Headlines and display text. Tighter spacing for large, bold text that needs visual impact.
+                    </div>
+                </div>
+                <div class="line-height-card">
+                    <div class="line-height-header">
+                        <span class="line-height-name">Snug</span>
+                        <span class="line-height-value">1.375</span>
+                    </div>
+                    <div class="line-height-preview" style="line-height: 1.375;">
+                        Large text blocks. A balance between tight and normal, good for subheadings.
+                    </div>
+                </div>
+                <div class="line-height-card">
+                    <div class="line-height-header">
+                        <span class="line-height-name">Normal</span>
+                        <span class="line-height-value">1.5</span>
+                    </div>
+                    <div class="line-height-preview" style="line-height: 1.5;">
+                        Body text for narrow columns. The default for most readable paragraph text.
+                    </div>
+                </div>
+                <div class="line-height-card">
+                    <div class="line-height-header">
+                        <span class="line-height-name">Relaxed</span>
+                        <span class="line-height-value">1.625</span>
+                    </div>
+                    <div class="line-height-preview" style="line-height: 1.625;">
+                        Body text for medium columns. More breathing room for longer content.
+                    </div>
+                </div>
+                <div class="line-height-card">
+                    <div class="line-height-header">
+                        <span class="line-height-name">Loose</span>
+                        <span class="line-height-value">2</span>
+                    </div>
+                    <div class="line-height-preview" style="line-height: 2;">
+                        Wide content areas. Maximum readability for very wide text blocks.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Text Styles -->
+        <section class="section">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Pre-defined Text Styles</h2>
+                    <p class="section-description">Composite styles combining size, weight, line-height, and letter-spacing</p>
+                </div>
+            </div>
+
+            <div class="text-styles">
+                <div class="style-item">
+                    <span class="style-name">heading1</span>
+                    <span class="style-preview" style="font-size: 36px; font-weight: 700; line-height: 1.25; letter-spacing: -0.025em;">Page Titles</span>
+                    <div class="style-specs">
+                        <span class="style-spec">36px</span>
+                        <span class="style-spec">700</span>
+                        <span class="style-spec">1.25</span>
+                        <span class="style-spec">-0.025em</span>
+                    </div>
+                </div>
+                <div class="style-item">
+                    <span class="style-name">heading2</span>
+                    <span class="style-preview" style="font-size: 30px; font-weight: 600; line-height: 1.25; letter-spacing: -0.025em;">Section Headers</span>
+                    <div class="style-specs">
+                        <span class="style-spec">30px</span>
+                        <span class="style-spec">600</span>
+                        <span class="style-spec">1.25</span>
+                        <span class="style-spec">-0.025em</span>
+                    </div>
+                </div>
+                <div class="style-item">
+                    <span class="style-name">heading3</span>
+                    <span class="style-preview" style="font-size: 24px; font-weight: 600; line-height: 1.375;">Subsection Headers</span>
+                    <div class="style-specs">
+                        <span class="style-spec">24px</span>
+                        <span class="style-spec">600</span>
+                        <span class="style-spec">1.375</span>
+                    </div>
+                </div>
+                <div class="style-item">
+                    <span class="style-name">heading4</span>
+                    <span class="style-preview" style="font-size: 20px; font-weight: 600; line-height: 1.375;">Card Titles</span>
+                    <div class="style-specs">
+                        <span class="style-spec">20px</span>
+                        <span class="style-spec">600</span>
+                        <span class="style-spec">1.375</span>
+                    </div>
+                </div>
+                <div class="style-item">
+                    <span class="style-name">body</span>
+                    <span class="style-preview" style="font-size: 16px; font-weight: 400; line-height: 1.5;">Default body text for paragraphs and content</span>
+                    <div class="style-specs">
+                        <span class="style-spec">16px</span>
+                        <span class="style-spec">400</span>
+                        <span class="style-spec">1.5</span>
+                    </div>
+                </div>
+                <div class="style-item">
+                    <span class="style-name">bodyLarge</span>
+                    <span class="style-preview" style="font-size: 18px; font-weight: 400; line-height: 1.625;">Large body text for emphasis and introductions</span>
+                    <div class="style-specs">
+                        <span class="style-spec">18px</span>
+                        <span class="style-spec">400</span>
+                        <span class="style-spec">1.625</span>
+                    </div>
+                </div>
+                <div class="style-item">
+                    <span class="style-name">bodySmall</span>
+                    <span class="style-preview" style="font-size: 14px; font-weight: 400; line-height: 1.5;">Secondary or caption text</span>
+                    <div class="style-specs">
+                        <span class="style-spec">14px</span>
+                        <span class="style-spec">400</span>
+                        <span class="style-spec">1.5</span>
+                    </div>
+                </div>
+                <div class="style-item">
+                    <span class="style-name">caption</span>
+                    <span class="style-preview" style="font-size: 12px; font-weight: 500; line-height: 1.5; letter-spacing: 0.025em;">Small labels and badges</span>
+                    <div class="style-specs">
+                        <span class="style-spec">12px</span>
+                        <span class="style-spec">500</span>
+                        <span class="style-spec">1.5</span>
+                        <span class="style-spec">0.025em</span>
+                    </div>
+                </div>
+                <div class="style-item">
+                    <span class="style-name">overline</span>
+                    <span class="style-preview" style="font-size: 12px; font-weight: 600; line-height: 1.5; letter-spacing: 0.05em; text-transform: uppercase;">OVERLINE LABELS</span>
+                    <div class="style-specs">
+                        <span class="style-spec">12px</span>
+                        <span class="style-spec">600</span>
+                        <span class="style-spec">1.5</span>
+                        <span class="style-spec">0.05em</span>
+                        <span class="style-spec">UPPERCASE</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Letter Spacing -->
+        <section class="section">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Letter Spacing</h2>
+                    <p class="section-description">6 tracking options from tighter to widest</p>
+                </div>
+            </div>
+
+            <div class="tracking-demo">
+                <div class="tracking-item">
+                    <span class="tracking-label">tighter</span>
+                    <span class="tracking-value">-0.05em</span>
+                    <span class="tracking-preview" style="letter-spacing: -0.05em;">Large headlines</span>
+                </div>
+                <div class="tracking-item">
+                    <span class="tracking-label">tight</span>
+                    <span class="tracking-value">-0.025em</span>
+                    <span class="tracking-preview" style="letter-spacing: -0.025em;">Headlines</span>
+                </div>
+                <div class="tracking-item">
+                    <span class="tracking-label">normal</span>
+                    <span class="tracking-value">0em</span>
+                    <span class="tracking-preview" style="letter-spacing: 0em;">Default tracking</span>
+                </div>
+                <div class="tracking-item">
+                    <span class="tracking-label">wide</span>
+                    <span class="tracking-value">0.025em</span>
+                    <span class="tracking-preview" style="letter-spacing: 0.025em;">Small caps, buttons</span>
+                </div>
+                <div class="tracking-item">
+                    <span class="tracking-label">wider</span>
+                    <span class="tracking-value">0.05em</span>
+                    <span class="tracking-preview" style="letter-spacing: 0.05em;">All-caps text</span>
+                </div>
+                <div class="tracking-item">
+                    <span class="tracking-label">widest</span>
+                    <span class="tracking-value">0.1em</span>
+                    <span class="tracking-preview" style="letter-spacing: 0.1em;">Spaced-out labels</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Editor -->
+        <section class="section">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Live Typography Editor</h2>
+                    <p class="section-description">Experiment with different combinations</p>
+                </div>
+            </div>
+
+            <div class="live-editor">
+                <div class="editor-controls">
+                    <div class="control-group">
+                        <label class="control-label">Font Size</label>
+                        <select class="control-select" id="fontSize" onchange="updatePreview()">
+                            <option value="12px">12px (xs)</option>
+                            <option value="14px">14px (sm)</option>
+                            <option value="16px" selected>16px (base)</option>
+                            <option value="18px">18px (lg)</option>
+                            <option value="20px">20px (xl)</option>
+                            <option value="24px">24px (2xl)</option>
+                            <option value="30px">30px (3xl)</option>
+                            <option value="36px">36px (4xl)</option>
+                            <option value="48px">48px (5xl)</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Font Weight</label>
+                        <select class="control-select" id="fontWeight" onchange="updatePreview()">
+                            <option value="300">Light (300)</option>
+                            <option value="400" selected>Normal (400)</option>
+                            <option value="500">Medium (500)</option>
+                            <option value="600">Semibold (600)</option>
+                            <option value="700">Bold (700)</option>
+                            <option value="800">Extrabold (800)</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Line Height</label>
+                        <select class="control-select" id="lineHeight" onchange="updatePreview()">
+                            <option value="1">None (1)</option>
+                            <option value="1.25">Tight (1.25)</option>
+                            <option value="1.375">Snug (1.375)</option>
+                            <option value="1.5" selected>Normal (1.5)</option>
+                            <option value="1.625">Relaxed (1.625)</option>
+                            <option value="2">Loose (2)</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Letter Spacing</label>
+                        <select class="control-select" id="letterSpacing" onchange="updatePreview()">
+                            <option value="-0.05em">Tighter (-0.05em)</option>
+                            <option value="-0.025em">Tight (-0.025em)</option>
+                            <option value="0em" selected>Normal (0em)</option>
+                            <option value="0.025em">Wide (0.025em)</option>
+                            <option value="0.05em">Wider (0.05em)</option>
+                            <option value="0.1em">Widest (0.1em)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="editor-preview">
+                    <p id="preview-text">The quick brown fox jumps over the lazy dog. Pack my box with five dozen liquor jugs.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>CSS Design System - Typography Reference</p>
+            <p style="margin-top: 0.5rem;">Following Refactoring UI principles - hand-picked values, not mathematical ratios</p>
+        </footer>
+    </div>
+
+    <script>
+        function updatePreview() {
+            const preview = document.getElementById('preview-text');
+            const fontSize = document.getElementById('fontSize').value;
+            const fontWeight = document.getElementById('fontWeight').value;
+            const lineHeight = document.getElementById('lineHeight').value;
+            const letterSpacing = document.getElementById('letterSpacing').value;
+
+            preview.style.fontSize = fontSize;
+            preview.style.fontWeight = fontWeight;
+            preview.style.lineHeight = lineHeight;
+            preview.style.letterSpacing = letterSpacing;
+        }
+    </script>
+</body>
+</html>

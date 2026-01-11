@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shadow & Elevation - CSS Design System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --css-navy: #1b2a53;
+            --css-sky: #356a9d;
+            --neutral-50: #f8fafc;
+            --neutral-100: #f1f5f9;
+            --neutral-200: #e2e8f0;
+            --neutral-300: #cbd5e1;
+            --neutral-400: #94a3b8;
+            --neutral-500: #64748b;
+            --neutral-600: #475569;
+            --neutral-700: #334155;
+            --neutral-800: #1e293b;
+            --neutral-900: #0f172a;
+
+            /* Shadows */
+            --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+            --shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--neutral-100);
+            color: var(--neutral-800);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Navigation */
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--neutral-200);
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--css-navy);
+        }
+
+        .nav-logo {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-logo svg {
+            width: 40px;
+            height: 40px;
+        }
+
+        .nav-title {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .nav-back {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--neutral-500);
+            text-decoration: none;
+            font-size: 0.875rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .nav-back:hover {
+            background: var(--neutral-200);
+            color: var(--neutral-700);
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--css-navy);
+            letter-spacing: -0.025em;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--neutral-500);
+            font-size: 1.1rem;
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--css-navy);
+        }
+
+        .section-description {
+            color: var(--neutral-500);
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: linear-gradient(135deg, var(--css-navy) 0%, var(--css-sky) 100%);
+            border-radius: 16px;
+            padding: 2rem;
+            color: white;
+            margin-bottom: 3rem;
+        }
+
+        .info-box h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .info-box p {
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        /* Shadow Scale */
+        .shadow-scale {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        @media (max-width: 900px) {
+            .shadow-scale {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .shadow-scale {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .shadow-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .shadow-preview {
+            width: 100%;
+            aspect-ratio: 1;
+            max-width: 180px;
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 1.25rem;
+            transition: transform 0.3s ease;
+        }
+
+        .shadow-preview:hover {
+            transform: translateY(-4px);
+        }
+
+        .shadow-preview.none {
+            box-shadow: none;
+            border: 1px dashed var(--neutral-300);
+        }
+
+        .shadow-preview.xs {
+            box-shadow: var(--shadow-xs);
+        }
+
+        .shadow-preview.sm {
+            box-shadow: var(--shadow-sm);
+        }
+
+        .shadow-preview.md {
+            box-shadow: var(--shadow-md);
+        }
+
+        .shadow-preview.lg {
+            box-shadow: var(--shadow-lg);
+        }
+
+        .shadow-preview.xl {
+            box-shadow: var(--shadow-xl);
+        }
+
+        .shadow-preview.xxl {
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .shadow-preview.inner {
+            box-shadow: var(--shadow-inner);
+        }
+
+        .shadow-name {
+            font-weight: 600;
+            color: var(--neutral-800);
+            margin-bottom: 0.25rem;
+        }
+
+        .shadow-token {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--css-sky);
+            margin-bottom: 0.5rem;
+        }
+
+        .shadow-desc {
+            font-size: 0.8rem;
+            color: var(--neutral-500);
+        }
+
+        /* Two-Part Shadow Explanation */
+        .two-part {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .two-part-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        @media (max-width: 700px) {
+            .two-part-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .shadow-component {
+            padding: 1.5rem;
+            background: var(--neutral-50);
+            border-radius: 12px;
+        }
+
+        .shadow-component h4 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--neutral-700);
+            margin-bottom: 1rem;
+        }
+
+        .shadow-demo {
+            display: flex;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .shadow-demo-box {
+            width: 120px;
+            height: 80px;
+            background: white;
+            border-radius: 8px;
+        }
+
+        .shadow-demo-box.direct {
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+
+        .shadow-demo-box.ambient {
+            box-shadow: 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+
+        .shadow-demo-box.combined {
+            box-shadow: var(--shadow-md);
+        }
+
+        .shadow-code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--neutral-500);
+            background: var(--neutral-100);
+            padding: 0.75rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+            word-break: break-all;
+        }
+
+        /* Elevation System */
+        .elevation-system {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .elevation-stack {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 3rem 2rem;
+            background: var(--neutral-50);
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .elevation-layer {
+            width: 80%;
+            max-width: 400px;
+            padding: 1rem 1.5rem;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+
+        .elevation-layer:hover {
+            transform: scale(1.02);
+        }
+
+        .elevation-layer.level-0 {
+            box-shadow: none;
+            border: 1px solid var(--neutral-200);
+        }
+
+        .elevation-layer.level-1 {
+            box-shadow: var(--shadow-xs);
+        }
+
+        .elevation-layer.level-2 {
+            box-shadow: var(--shadow-sm);
+        }
+
+        .elevation-layer.level-3 {
+            box-shadow: var(--shadow-md);
+        }
+
+        .elevation-layer.level-4 {
+            box-shadow: var(--shadow-lg);
+        }
+
+        .elevation-layer.level-5 {
+            box-shadow: var(--shadow-xl);
+        }
+
+        .elevation-info {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .elevation-badge {
+            width: 28px;
+            height: 28px;
+            background: var(--css-navy);
+            color: white;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .elevation-label {
+            font-size: 0.875rem;
+            color: var(--neutral-700);
+        }
+
+        .elevation-use {
+            font-size: 0.75rem;
+            color: var(--neutral-400);
+        }
+
+        /* Z-Index Stack */
+        .zindex-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .zindex-table th,
+        .zindex-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--neutral-100);
+        }
+
+        .zindex-table th {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--neutral-400);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .zindex-table td {
+            font-size: 0.875rem;
+        }
+
+        .zindex-name {
+            font-weight: 500;
+            color: var(--neutral-700);
+        }
+
+        .zindex-value {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--css-sky);
+        }
+
+        .zindex-desc {
+            color: var(--neutral-500);
+        }
+
+        .zindex-bar {
+            width: 100%;
+            max-width: 200px;
+            height: 8px;
+            background: var(--neutral-100);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .zindex-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--css-navy), var(--css-sky));
+            border-radius: 4px;
+        }
+
+        /* Focus Ring Demo */
+        .focus-demo {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .focus-examples {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        @media (max-width: 700px) {
+            .focus-examples {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .focus-example {
+            text-align: center;
+        }
+
+        .focus-button {
+            padding: 0.75rem 1.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .focus-button.default {
+            background: var(--css-navy);
+            color: white;
+            border: none;
+            box-shadow: 0 0 0 0 transparent;
+        }
+
+        .focus-button.default:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgb(59 130 246 / 0.5);
+        }
+
+        .focus-button.primary {
+            background: var(--css-navy);
+            color: white;
+            border: none;
+        }
+
+        .focus-button.primary:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgb(27 42 83 / 0.3);
+        }
+
+        .focus-button.outline {
+            background: white;
+            color: var(--css-navy);
+            border: 1px solid var(--neutral-300);
+        }
+
+        .focus-button.outline:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgb(59 130 246 / 0.5);
+            border-color: transparent;
+        }
+
+        .focus-label {
+            font-size: 0.8rem;
+            color: var(--neutral-500);
+            margin-top: 1rem;
+        }
+
+        .focus-code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            color: var(--neutral-400);
+            margin-top: 0.5rem;
+        }
+
+        /* Interactive Demo */
+        .interactive-demo {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .demo-controls {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .demo-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--neutral-200);
+            background: white;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .demo-btn:hover {
+            background: var(--neutral-50);
+        }
+
+        .demo-btn.active {
+            background: var(--css-navy);
+            color: white;
+            border-color: var(--css-navy);
+        }
+
+        .demo-preview {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 2rem;
+            background: var(--neutral-50);
+            border-radius: 12px;
+        }
+
+        .demo-card {
+            width: 280px;
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .demo-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--neutral-800);
+            margin-bottom: 0.5rem;
+        }
+
+        .demo-card p {
+            font-size: 0.875rem;
+            color: var(--neutral-500);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--neutral-200);
+            color: var(--neutral-400);
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav">
+            <a href="index.html" class="nav-brand">
+                <div class="nav-logo">
+                    <svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg"><path fill="#356a9d" d="M341.23,201.61l12.87,61.68c0,25.08-13.36,50.32-31.21,67.87C279,374.42,227.21,415.69,203.53,491.37V213.1a40.21,40.21,0,0,1,40.21-40.21h72A9,9,0,0,1,323,176.6Z"/><path fill="#356a9d" d="M796.47,213.06V511.59c-18.81-76-52.18-131.85-78.39-133.92-15.35-1.22-23.71-17.76-38,49.26L592.14,210.48c-.38-7.14-.88-16.7-1.52-27.35a9.71,9.71,0,0,1,9.68-10.24h156A40.15,40.15,0,0,1,796.47,213.06Z"/><path fill="#356a9d" d="M796.47,703.51V786.9a40.19,40.19,0,0,1-40.17,40.21H691.86C740.91,802.71,777.57,763.68,796.47,703.51Z"/><path fill="#356a9d" d="M679,575.44s0,0,0,.1c-4.29,37-21.19,66.16-45,87l0,0c-38.14,7-112,15.17-159.91-14.87-1.4-.87-2.75-1.74-4-2.65-1.75-1.2-3.43-2.44-5.06-3.7-99.69-73.15-23.63-213.55,2.51-247.55v-.05c.67-.92,1.35-1.73,2-2.5C482,376.19,494.49,361.75,506.53,348c.72-.87,1.35-1.59,1.83-2.12a4.91,4.91,0,0,0,.48-.58l.14-.14a4.09,4.09,0,0,1,.39-.48C537.11,312.73,562,284.51,578.9,261c42.23,95.24,91.82,235.84,91.82,235.84C679.44,526,681.7,552.23,679,575.44Z"/><path fill="#356a9d" d="M346.24,827.11H243.74a40.23,40.23,0,0,1-40.21-40.21V655.35C224.92,718.69,272.7,786.77,346.24,827.11Z"/><path fill="#1d2f5d" d="M679,575.54c-4.29,37-21.19,66.16-45,87l0,0c-73.48,64.29-212.59,49.12-249.09-63.79-23.21-71.61,20.66-130.83,75.79-197,.63-.77,3.13-3.71,6.79-7.94v-.05c10.88-12.71,31.44-36.79,39.10-45.79.72-.87,1.35-1.59,1.83-2.12-108,128.81-106.53,252.74-27.46,296.33C574.59,693.83,666.41,639.65,679,575.54Z"/></svg>
+                </div>
+                <span class="nav-title">Design System</span>
+            </a>
+            <a href="index.html" class="nav-back">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back to Index
+            </a>
+        </nav>
+
+        <header>
+            <h1>Shadow & Elevation</h1>
+            <p class="subtitle">Two-part shadow system with elevation levels and z-index stack</p>
+        </header>
+
+        <!-- Info Box -->
+        <div class="info-box">
+            <h3>Two-Part Shadow Technique</h3>
+            <p>
+                Following Refactoring UI principles, our shadows use two layers: a larger, softer shadow
+                for ambient light and a smaller, darker shadow for direct light. This creates more
+                realistic depth perception than single-layer shadows.
+            </p>
+        </div>
+
+        <!-- Shadow Scale -->
+        <section class="section">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Shadow Scale</h2>
+                    <p class="section-description">7 shadow levels from none to dramatic</p>
+                </div>
+            </div>
+
+            <div class="shadow-scale">
+                <div class="shadow-card">
+                    <div class="shadow-preview none"></div>
+                    <div class="shadow-name">None</div>
+                    <div class="shadow-token">shadow-none</div>
+                    <div class="shadow-desc">Flat, no elevation</div>
+                </div>
+                <div class="shadow-card">
+                    <div class="shadow-preview xs"></div>
+                    <div class="shadow-name">Extra Small</div>
+                    <div class="shadow-token">shadow-xs</div>
+                    <div class="shadow-desc">Subtle lift, inputs</div>
+                </div>
+                <div class="shadow-card">
+                    <div class="shadow-preview sm"></div>
+                    <div class="shadow-name">Small</div>
+                    <div class="shadow-token">shadow-sm</div>
+                    <div class="shadow-desc">Slight elevation, cards</div>
+                </div>
+                <div class="shadow-card">
+                    <div class="shadow-preview md"></div>
+                    <div class="shadow-name">Medium</div>
+                    <div class="shadow-token">shadow-md</div>
+                    <div class="shadow-desc">Dropdowns, popovers</div>
+                </div>
+                <div class="shadow-card">
+                    <div class="shadow-preview lg"></div>
+                    <div class="shadow-name">Large</div>
+                    <div class="shadow-token">shadow-lg</div>
+                    <div class="shadow-desc">Modals, floating panels</div>
+                </div>
+                <div class="shadow-card">
+                    <div class="shadow-preview xl"></div>
+                    <div class="shadow-name">Extra Large</div>
+                    <div class="shadow-token">shadow-xl</div>
+                    <div class="shadow-desc">Dialogs, overlays</div>
+                </div>
+                <div class="shadow-card">
+                    <div class="shadow-preview xxl"></div>
+                    <div class="shadow-name">2X Large</div>
+                    <div class="shadow-token">shadow-2xl</div>
+                    <div class="shadow-desc">Hero images, dramatic</div>
+                </div>
+                <div class="shadow-card">
+                    <div class="shadow-preview inner"></div>
+                    <div class="shadow-name">Inner</div>
+                    <div class="shadow-token">shadow-inner</div>
+                    <div class="shadow-desc">Pressed states, insets</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Two-Part Shadow Explanation -->
+        <section class="section">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Two-Part Shadow Anatomy</h2>
+                    <p class="section-description">Direct light + ambient light = realistic depth</p>
+                </div>
+            </div>
+
+            <div class="two-part">
+                <div class="two-part-grid">
+                    <div class="shadow-component">
+                        <h4>Direct Shadow (Sharper)</h4>
+                        <div class="shadow-demo">
+                            <div class="shadow-demo-box direct"></div>
+                        </div>
+                        <div class="shadow-code">0 4px 6px -1px rgb(0 0 0 / 0.1)</div>
+                        <p style="margin-top: 0.75rem; font-size: 0.8rem; color: var(--neutral-500);">
+                            Mimics light from above, creates the primary shadow shape.
+                        </p>
+                    </div>
+
+                    <div class="shadow-component">
+                        <h4>Ambient Shadow (Softer)</h4>
+                        <div class="shadow-demo">
+                            <div class="shadow-demo-box ambient"></div>
+                        </div>
+                        <div class="shadow-code">0 2px 4px -2px rgb(0 0 0 / 0.1)</div>
+                        <p style="margin-top: 0.75rem; font-size: 0.8rem; color: var(--neutral-500);">
+                            Diffuse environmental light, adds subtle depth.
+                        </p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 2rem; text-align: center;">
+                    <h4 style="margin-bottom: 1rem; color: var(--neutral-700);">Combined Result</h4>
+                    <div class="shadow-demo">
+                        <div class="shadow-demo-box combined" style="width: 160px; height: 100px;"></div>
+                    </div>
+                    <div class="shadow-code" style="max-width: 500px; margin: 1rem auto 0;">
+                        0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Elevation System -->
+        <section class="section">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Elevation Levels</h2>
+                    <p class="section-description">Semantic elevation for consistent z-axis usage</p>
+                </div>
+            </div>
+
+            <div class="elevation-system">
+                <div class="elevation-stack">
+                    <div class="elevation-layer level-5">
+                        <div class="elevation-info">
+                            <span class="elevation-badge">5</span>
+                            <span class="elevation-label">Top-level overlays</span>
+                        </div>
+                        <span class="elevation-use">z-index: 50</span>
+                    </div>
+                    <div class="elevation-layer level-4">
+                        <div class="elevation-info">
+                            <span class="elevation-badge">4</span>
+                            <span class="elevation-label">Modals, dialogs</span>
+                        </div>
+                        <span class="elevation-use">z-index: 40</span>
+                    </div>
+                    <div class="elevation-layer level-3">
+                        <div class="elevation-info">
+                            <span class="elevation-badge">3</span>
+                            <span class="elevation-label">Dropdowns, menus</span>
+                        </div>
+                        <span class="elevation-use">z-index: 30</span>
+                    </div>
+                    <div class="elevation-layer level-2">
+                        <div class="elevation-info">
+                            <span class="elevation-badge">2</span>
+                            <span class="elevation-label">Raised cards</span>
+                        </div>
+                        <span class="elevation-use">z-index: 20</span>
+                    </div>
+                    <div class="elevation-layer level-1">
+                        <div class="elevation-info">
+                            <span class="elevation-badge">1</span>
+                            <span class="elevation-label">Slight lift</span>
+                        </div>
+                        <span class="elevation-use">z-index: 10</span>
+                    </div>
+                    <div class="elevation-layer level-0">
+                        <div class="elevation-info">
+                            <span class="elevation-badge">0</span>
+                            <span class="elevation-label">Base level (flat)</span>
+                        </div>
+                        <span class="elevation-use">z-index: 0</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Z-Index Stack -->
+        <section class="section">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Z-Index Stack</h2>
+                    <p class="section-description">Organized stacking order for UI layers</p>
+                </div>
+            </div>
+
+            <div class="elevation-system">
+                <table class="zindex-table">
+                    <thead>
+                        <tr>
+                            <th>Token</th>
+                            <th>Value</th>
+                            <th>Use Case</th>
+                            <th>Visual</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="zindex-name">tooltip</td>
+                            <td class="zindex-value">1090</td>
+                            <td class="zindex-desc">Tooltips (highest)</td>
+                            <td><div class="zindex-bar"><div class="zindex-bar-fill" style="width: 100%;"></div></div></td>
+                        </tr>
+                        <tr>
+                            <td class="zindex-name">toast</td>
+                            <td class="zindex-value">1080</td>
+                            <td class="zindex-desc">Toast notifications</td>
+                            <td><div class="zindex-bar"><div class="zindex-bar-fill" style="width: 95%;"></div></div></td>
+                        </tr>
+                        <tr>
+                            <td class="zindex-name">popover</td>
+                            <td class="zindex-value">1060</td>
+                            <td class="zindex-desc">Popovers, tooltips</td>
+                            <td><div class="zindex-bar"><div class="zindex-bar-fill" style="width: 85%;"></div></div></td>
+                        </tr>
+                        <tr>
+                            <td class="zindex-name">modal</td>
+                            <td class="zindex-value">1050</td>
+                            <td class="zindex-desc">Modal dialogs</td>
+                            <td><div class="zindex-bar"><div class="zindex-bar-fill" style="width: 80%;"></div></div></td>
+                        </tr>
+                        <tr>
+                            <td class="zindex-name">overlay</td>
+                            <td class="zindex-value">1040</td>
+                            <td class="zindex-desc">Overlays, backdrops</td>
+                            <td><div class="zindex-bar"><div class="zindex-bar-fill" style="width: 75%;"></div></div></td>
+                        </tr>
+                        <tr>
+                            <td class="zindex-name">sticky</td>
+                            <td class="zindex-value">1020</td>
+                            <td class="zindex-desc">Sticky headers</td>
+                            <td><div class="zindex-bar"><div class="zindex-bar-fill" style="width: 65%;"></div></div></td>
+                        </tr>
+                        <tr>
+                            <td class="zindex-name">dropdown</td>
+                            <td class="zindex-value">1000</td>
+                            <td class="zindex-desc">Dropdown menus</td>
+                            <td><div class="zindex-bar"><div class="zindex-bar-fill" style="width: 55%;"></div></div></td>
+                        </tr>
+                        <tr>
+                            <td class="zindex-name">docked</td>
+                            <td class="zindex-value">10</td>
+                            <td class="zindex-desc">Docked elements</td>
+                            <td><div class="zindex-bar"><div class="zindex-bar-fill" style="width: 10%;"></div></div></td>
+                        </tr>
+                        <tr>
+                            <td class="zindex-name">base</td>
+                            <td class="zindex-value">0</td>
+                            <td class="zindex-desc">Base level</td>
+                            <td><div class="zindex-bar"><div class="zindex-bar-fill" style="width: 2%;"></div></div></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Focus Ring Demo -->
+        <section class="section">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Focus Ring Shadows</h2>
+                    <p class="section-description">Accessible focus indicators using box-shadow</p>
+                </div>
+            </div>
+
+            <div class="focus-demo">
+                <p style="color: var(--neutral-600); margin-bottom: 0.5rem;">
+                    Click or Tab to the buttons below to see focus states:
+                </p>
+
+                <div class="focus-examples">
+                    <div class="focus-example">
+                        <button class="focus-button default">Default Focus</button>
+                        <p class="focus-label">Standard blue ring</p>
+                        <p class="focus-code">0 0 0 3px rgb(59 130 246 / 0.5)</p>
+                    </div>
+                    <div class="focus-example">
+                        <button class="focus-button primary">Primary Focus</button>
+                        <p class="focus-label">Brand color ring</p>
+                        <p class="focus-code">0 0 0 3px rgb(27 42 83 / 0.3)</p>
+                    </div>
+                    <div class="focus-example">
+                        <button class="focus-button outline">Outline Button</button>
+                        <p class="focus-label">Focus on outline style</p>
+                        <p class="focus-code">0 0 0 3px rgb(59 130 246 / 0.5)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Demo -->
+        <section class="section">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Interactive Shadow Demo</h2>
+                    <p class="section-description">Click to see different shadow levels applied</p>
+                </div>
+            </div>
+
+            <div class="interactive-demo">
+                <div class="demo-controls">
+                    <button class="demo-btn" onclick="setShadow('none')">None</button>
+                    <button class="demo-btn" onclick="setShadow('xs')">XS</button>
+                    <button class="demo-btn active" onclick="setShadow('sm')">SM</button>
+                    <button class="demo-btn" onclick="setShadow('md')">MD</button>
+                    <button class="demo-btn" onclick="setShadow('lg')">LG</button>
+                    <button class="demo-btn" onclick="setShadow('xl')">XL</button>
+                    <button class="demo-btn" onclick="setShadow('2xl')">2XL</button>
+                </div>
+
+                <div class="demo-preview">
+                    <div class="demo-card" id="demo-card" style="box-shadow: var(--shadow-sm);">
+                        <h4>Card Component</h4>
+                        <p>See how different shadow levels affect the perceived depth of this card.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>CSS Design System - Shadow & Elevation Reference</p>
+            <p style="margin-top: 0.5rem;">Following Refactoring UI two-part shadow technique</p>
+        </footer>
+    </div>
+
+    <script>
+        function setShadow(level) {
+            const card = document.getElementById('demo-card');
+            const buttons = document.querySelectorAll('.demo-btn');
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const shadows = {
+                'none': 'none',
+                'xs': 'var(--shadow-xs)',
+                'sm': 'var(--shadow-sm)',
+                'md': 'var(--shadow-md)',
+                'lg': 'var(--shadow-lg)',
+                'xl': 'var(--shadow-xl)',
+                '2xl': 'var(--shadow-2xl)'
+            };
+
+            card.style.boxShadow = shadows[level];
+        }
+    </script>
+</body>
+</html>

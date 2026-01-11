@@ -1,0 +1,141 @@
+{
+  "$schema": "https://design-tokens.json-schema.org/",
+  "name": "CSS Design System Animations",
+  "description": "Animation tokens for consistent motion across the design system",
+
+  "duration": {
+    "instant": { "value": "0ms", "description": "Immediate, no transition" },
+    "fast": { "value": "100ms", "description": "Quick micro-interactions" },
+    "normal": { "value": "200ms", "description": "Standard transitions" },
+    "slow": { "value": "300ms", "description": "Larger element transitions" },
+    "slower": { "value": "500ms", "description": "Page/modal transitions" },
+    "slowest": { "value": "700ms", "description": "Complex animations" }
+  },
+
+  "easing": {
+    "linear": {
+      "value": "linear",
+      "description": "Constant speed, use for opacity"
+    },
+    "ease": {
+      "value": "ease",
+      "description": "Default browser easing"
+    },
+    "easeIn": {
+      "value": "cubic-bezier(0.4, 0, 1, 1)",
+      "description": "Slow start, use for exits"
+    },
+    "easeOut": {
+      "value": "cubic-bezier(0, 0, 0.2, 1)",
+      "description": "Slow end, use for entrances"
+    },
+    "easeInOut": {
+      "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+      "description": "Slow start and end, use for movements"
+    },
+    "spring": {
+      "value": "cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+      "description": "Bouncy spring effect"
+    },
+    "bounce": {
+      "value": "cubic-bezier(0.68, -0.55, 0.265, 1.55)",
+      "description": "More pronounced bounce"
+    }
+  },
+
+  "keyframes": {
+    "fadeIn": {
+      "from": { "opacity": "0" },
+      "to": { "opacity": "1" },
+      "description": "Simple fade in"
+    },
+    "fadeOut": {
+      "from": { "opacity": "1" },
+      "to": { "opacity": "0" },
+      "description": "Simple fade out"
+    },
+    "slideInUp": {
+      "from": { "transform": "translateY(10px)", "opacity": "0" },
+      "to": { "transform": "translateY(0)", "opacity": "1" },
+      "description": "Slide in from bottom"
+    },
+    "slideInDown": {
+      "from": { "transform": "translateY(-10px)", "opacity": "0" },
+      "to": { "transform": "translateY(0)", "opacity": "1" },
+      "description": "Slide in from top"
+    },
+    "slideInLeft": {
+      "from": { "transform": "translateX(-10px)", "opacity": "0" },
+      "to": { "transform": "translateX(0)", "opacity": "1" },
+      "description": "Slide in from left"
+    },
+    "slideInRight": {
+      "from": { "transform": "translateX(10px)", "opacity": "0" },
+      "to": { "transform": "translateX(0)", "opacity": "1" },
+      "description": "Slide in from right"
+    },
+    "scaleIn": {
+      "from": { "transform": "scale(0.95)", "opacity": "0" },
+      "to": { "transform": "scale(1)", "opacity": "1" },
+      "description": "Scale up on enter"
+    },
+    "scaleOut": {
+      "from": { "transform": "scale(1)", "opacity": "1" },
+      "to": { "transform": "scale(0.95)", "opacity": "0" },
+      "description": "Scale down on exit"
+    },
+    "spin": {
+      "from": { "transform": "rotate(0deg)" },
+      "to": { "transform": "rotate(360deg)" },
+      "description": "Continuous rotation for loading spinners"
+    },
+    "pulse": {
+      "0%": { "opacity": "1" },
+      "50%": { "opacity": "0.5" },
+      "100%": { "opacity": "1" },
+      "description": "Pulsing effect for skeleton loaders"
+    },
+    "ping": {
+      "0%": { "transform": "scale(1)", "opacity": "1" },
+      "75%": { "transform": "scale(2)", "opacity": "0" },
+      "100%": { "transform": "scale(2)", "opacity": "0" },
+      "description": "Ping effect for notifications"
+    },
+    "shake": {
+      "0%": { "transform": "translateX(0)" },
+      "25%": { "transform": "translateX(-5px)" },
+      "50%": { "transform": "translateX(5px)" },
+      "75%": { "transform": "translateX(-5px)" },
+      "100%": { "transform": "translateX(0)" },
+      "description": "Shake effect for error states"
+    }
+  },
+
+  "animation": {
+    "none": { "value": "none", "description": "No animation" },
+    "fadeIn": { "value": "fadeIn 200ms ease-out forwards", "description": "Fade in animation" },
+    "fadeOut": { "value": "fadeOut 200ms ease-in forwards", "description": "Fade out animation" },
+    "slideInUp": { "value": "slideInUp 200ms ease-out forwards", "description": "Slide up entrance" },
+    "slideInDown": { "value": "slideInDown 200ms ease-out forwards", "description": "Slide down entrance" },
+    "scaleIn": { "value": "scaleIn 200ms ease-out forwards", "description": "Scale in entrance" },
+    "spin": { "value": "spin 1s linear infinite", "description": "Continuous spin" },
+    "pulse": { "value": "pulse 2s ease-in-out infinite", "description": "Pulsing effect" },
+    "ping": { "value": "ping 1s cubic-bezier(0, 0, 0.2, 1) infinite", "description": "Ping notification" },
+    "shake": { "value": "shake 300ms ease-in-out", "description": "Error shake" }
+  },
+
+  "transition": {
+    "none": { "value": "none", "description": "No transition" },
+    "all": { "value": "all 200ms ease-in-out", "description": "Transition all properties" },
+    "colors": { "value": "color, background-color, border-color, text-decoration-color, fill, stroke 200ms ease-in-out", "description": "Color transitions" },
+    "opacity": { "value": "opacity 200ms ease-in-out", "description": "Opacity transition" },
+    "shadow": { "value": "box-shadow 200ms ease-in-out", "description": "Shadow transition" },
+    "transform": { "value": "transform 200ms ease-in-out", "description": "Transform transition" }
+  },
+
+  "reducedMotion": {
+    "description": "Settings for users who prefer reduced motion",
+    "replaceWith": "opacity 0ms linear",
+    "note": "When prefers-reduced-motion is enabled, replace animations with instant opacity changes"
+  }
+}

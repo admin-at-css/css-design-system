@@ -1,0 +1,140 @@
+{
+  "$schema": "https://design-tokens.json-schema.org/",
+  "name": "CSS Design System Colors",
+  "description": "Color tokens following Refactoring UI principles - HSL-based with proper luminosity and saturation curves",
+
+  "primary": {
+    "description": "Deep Navy Blue - Primary brand color derived from CSS logo",
+    "50": { "value": "#e8ecf4", "description": "Lightest tint for backgrounds" },
+    "100": { "value": "#c5d0e3", "description": "Very light backgrounds, hover states" },
+    "200": { "value": "#9fb1d0", "description": "Light backgrounds, disabled states" },
+    "300": { "value": "#7891bc", "description": "Borders on light backgrounds" },
+    "400": { "value": "#5a79ac", "description": "Secondary text, icons" },
+    "500": { "value": "#3d619c", "description": "Interactive elements, links" },
+    "600": { "value": "#2f5f91", "description": "Primary buttons, key actions" },
+    "700": { "value": "#264b7a", "description": "Hover states on primary" },
+    "800": { "value": "#1d3a63", "description": "Active/pressed states" },
+    "900": { "value": "#1b2a53", "description": "Darkest shade for text, headers" },
+    "950": { "value": "#121c38", "description": "Near-black for maximum contrast" },
+    "DEFAULT": { "value": "#1b2a53" }
+  },
+
+  "secondary": {
+    "description": "Deep Sky Blue - Secondary brand color for accents and highlights",
+    "50": { "value": "#eef5f9", "description": "Lightest tint" },
+    "100": { "value": "#d5e7f2", "description": "Light backgrounds" },
+    "200": { "value": "#afd0e6", "description": "Subtle backgrounds" },
+    "300": { "value": "#80b4d6", "description": "Decorative elements" },
+    "400": { "value": "#5a9ac4", "description": "Icons, secondary actions" },
+    "500": { "value": "#3d84b4", "description": "Links, interactive" },
+    "600": { "value": "#356a9d", "description": "Primary accent color" },
+    "700": { "value": "#2a5580", "description": "Hover on accent" },
+    "800": { "value": "#224363", "description": "Active/pressed" },
+    "900": { "value": "#1a3349", "description": "Dark accent text" },
+    "950": { "value": "#0f1f2d", "description": "Near-black accent" },
+    "DEFAULT": { "value": "#356a9d" }
+  },
+
+  "neutral": {
+    "description": "Slate Gray - Cool gray with subtle blue undertones for brand harmony",
+    "50": { "value": "#f8fafc", "description": "Page backgrounds, cards" },
+    "100": { "value": "#f1f5f9", "description": "Subtle backgrounds, dividers" },
+    "200": { "value": "#e2e8f0", "description": "Borders, disabled backgrounds" },
+    "300": { "value": "#cbd5e1", "description": "Stronger borders, placeholders" },
+    "400": { "value": "#94a3b8", "description": "Placeholder text, disabled text" },
+    "500": { "value": "#64748b", "description": "Secondary text, icons" },
+    "600": { "value": "#475569", "description": "Body text on light backgrounds" },
+    "700": { "value": "#334155", "description": "Strong text, headings" },
+    "800": { "value": "#1e293b", "description": "Primary text on light backgrounds" },
+    "900": { "value": "#0f172a", "description": "Highest contrast text" },
+    "950": { "value": "#020617", "description": "Near-black, dark mode text" },
+    "white": { "value": "#ffffff" },
+    "black": { "value": "#0f172a", "description": "Never use pure black - use this instead" }
+  },
+
+  "semantic": {
+    "success": {
+      "description": "Green for success states - slightly cool to match brand",
+      "50": { "value": "#f0fdf4" },
+      "100": { "value": "#dcfce7" },
+      "200": { "value": "#bbf7d0" },
+      "300": { "value": "#86efac" },
+      "400": { "value": "#4ade80" },
+      "500": { "value": "#22c55e" },
+      "600": { "value": "#16a34a" },
+      "700": { "value": "#15803d" },
+      "800": { "value": "#166534" },
+      "900": { "value": "#14532d" },
+      "DEFAULT": { "value": "#22c55e" }
+    },
+    "error": {
+      "description": "Red for error states",
+      "50": { "value": "#fef2f2" },
+      "100": { "value": "#fee2e2" },
+      "200": { "value": "#fecaca" },
+      "300": { "value": "#fca5a5" },
+      "400": { "value": "#f87171" },
+      "500": { "value": "#ef4444" },
+      "600": { "value": "#dc2626" },
+      "700": { "value": "#b91c1c" },
+      "800": { "value": "#991b1b" },
+      "900": { "value": "#7f1d1d" },
+      "DEFAULT": { "value": "#ef4444" }
+    },
+    "warning": {
+      "description": "Amber for warnings - rotated toward yellow for brightness",
+      "50": { "value": "#fffbeb" },
+      "100": { "value": "#fef3c7" },
+      "200": { "value": "#fde68a" },
+      "300": { "value": "#fcd34d" },
+      "400": { "value": "#fbbf24" },
+      "500": { "value": "#f59e0b" },
+      "600": { "value": "#d97706" },
+      "700": { "value": "#b45309" },
+      "800": { "value": "#92400e" },
+      "900": { "value": "#78350f" },
+      "DEFAULT": { "value": "#f59e0b" }
+    },
+    "info": {
+      "description": "Blue for informational states - matches brand secondary",
+      "50": { "value": "#eff6ff" },
+      "100": { "value": "#dbeafe" },
+      "200": { "value": "#bfdbfe" },
+      "300": { "value": "#93c5fd" },
+      "400": { "value": "#60a5fa" },
+      "500": { "value": "#3b82f6" },
+      "600": { "value": "#2563eb" },
+      "700": { "value": "#1d4ed8" },
+      "800": { "value": "#1e40af" },
+      "900": { "value": "#1e3a8a" },
+      "DEFAULT": { "value": "#3b82f6" }
+    }
+  },
+
+  "text": {
+    "primary": { "value": "#0f172a", "description": "Primary text - slate 900" },
+    "secondary": { "value": "#475569", "description": "Secondary text - slate 600" },
+    "tertiary": { "value": "#64748b", "description": "Tertiary/muted text - slate 500" },
+    "disabled": { "value": "#94a3b8", "description": "Disabled text - slate 400" },
+    "inverse": { "value": "#f8fafc", "description": "Text on dark backgrounds - slate 50" },
+    "link": { "value": "#2563eb", "description": "Link text color" },
+    "link-hover": { "value": "#1d4ed8", "description": "Link hover state" }
+  },
+
+  "background": {
+    "default": { "value": "#ffffff", "description": "Default page background" },
+    "subtle": { "value": "#f8fafc", "description": "Subtle background for sections" },
+    "muted": { "value": "#f1f5f9", "description": "Muted background for cards" },
+    "emphasis": { "value": "#e2e8f0", "description": "Emphasized backgrounds" },
+    "inverse": { "value": "#0f172a", "description": "Dark/inverse backgrounds" },
+    "overlay": { "value": "rgba(15, 23, 42, 0.5)", "description": "Modal/dialog overlay" }
+  },
+
+  "border": {
+    "default": { "value": "#e2e8f0", "description": "Default border color" },
+    "muted": { "value": "#f1f5f9", "description": "Subtle borders" },
+    "emphasis": { "value": "#cbd5e1", "description": "Emphasized borders" },
+    "strong": { "value": "#94a3b8", "description": "Strong/active borders" },
+    "focus": { "value": "#3b82f6", "description": "Focus ring color" }
+  }
+}

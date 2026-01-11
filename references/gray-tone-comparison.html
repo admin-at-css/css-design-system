@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neutral Palette - CSS Design System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* CSS Brand Colors */
+            --css-navy: #1b2a53;
+            --css-sky: #356a9d;
+
+            /* Slate Gray (Chosen Neutral) */
+            --slate-50: #f8fafc;
+            --slate-100: #f1f5f9;
+            --slate-200: #e2e8f0;
+            --slate-300: #cbd5e1;
+            --slate-400: #94a3b8;
+            --slate-500: #64748b;
+            --slate-600: #475569;
+            --slate-700: #334155;
+            --slate-800: #1e293b;
+            --slate-900: #0f172a;
+            --slate-950: #020617;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Navigation */
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--slate-200);
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--css-navy);
+        }
+
+        .nav-logo {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-logo svg {
+            width: 40px;
+            height: 40px;
+        }
+
+        .nav-title {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .nav-back {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--slate-500);
+            text-decoration: none;
+            font-size: 0.875rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .nav-back:hover {
+            background: var(--slate-100);
+            color: var(--slate-700);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--css-navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: #64748b;
+            font-size: 1.1rem;
+        }
+
+        /* Chosen Badge */
+        .chosen-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, var(--css-navy) 0%, var(--css-sky) 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            box-shadow: 0 10px 25px -5px rgba(27, 42, 83, 0.3);
+        }
+
+        .chosen-badge svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .chosen-badge h3 {
+            font-size: 1.25rem;
+            margin: 0;
+        }
+
+        .rationale {
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            text-align: center;
+            color: var(--slate-600);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* Slate Showcase */
+        .slate-showcase {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(27, 42, 83, 0.1);
+            border: 2px solid var(--css-navy);
+            margin-bottom: 2rem;
+        }
+
+        .showcase-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .showcase-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--css-navy);
+        }
+
+        .showcase-token {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--slate-400);
+            background: var(--slate-100);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+        }
+
+        /* Color Scale */
+        .color-scale {
+            display: flex;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .color-swatch {
+            flex: 1;
+            height: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 600;
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
+        .color-swatch:hover {
+            transform: scaleY(1.15);
+            z-index: 10;
+        }
+
+        .color-swatch span {
+            opacity: 0.9;
+        }
+
+        .color-swatch .hex {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.6rem;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .color-swatch:hover .hex {
+            opacity: 1;
+        }
+
+        /* UI Preview */
+        .ui-preview {
+            border: 1px solid var(--slate-200);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .preview-header {
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: var(--slate-100);
+            border-bottom: 1px solid var(--slate-200);
+        }
+
+        .preview-logo {
+            width: 28px;
+            height: 28px;
+        }
+
+        .preview-nav {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--slate-600);
+        }
+
+        .preview-body {
+            padding: 1.5rem;
+            background: var(--slate-50);
+        }
+
+        .preview-card {
+            padding: 1.25rem;
+            border-radius: 8px;
+            background: white;
+            border: 1px solid var(--slate-200);
+            margin-bottom: 1rem;
+        }
+
+        .preview-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--slate-800);
+            margin-bottom: 0.5rem;
+        }
+
+        .preview-card p {
+            font-size: 0.875rem;
+            color: var(--slate-600);
+            line-height: 1.5;
+        }
+
+        .preview-buttons {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .preview-btn {
+            padding: 0.625rem 1.25rem;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+        }
+
+        .preview-btn-primary {
+            background: var(--css-navy);
+            color: white;
+        }
+
+        .preview-btn-secondary {
+            background: white;
+            color: var(--slate-700);
+            border: 1px solid var(--slate-300);
+        }
+
+        /* Text Samples */
+        .text-samples {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--slate-200);
+        }
+
+        .text-samples h5 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--slate-400);
+            margin-bottom: 1rem;
+        }
+
+        .text-row {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .text-label {
+            width: 100px;
+            font-size: 0.75rem;
+            color: var(--slate-400);
+        }
+
+        .text-sample {
+            font-size: 1rem;
+        }
+
+        /* Why Slate Section */
+        .why-section {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 800px) {
+            .why-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .why-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            border: 1px solid var(--slate-200);
+        }
+
+        .why-card h4 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            color: var(--css-navy);
+            margin-bottom: 0.75rem;
+        }
+
+        .why-card h4 svg {
+            color: var(--css-sky);
+        }
+
+        .why-card p {
+            font-size: 0.875rem;
+            color: var(--slate-600);
+            line-height: 1.6;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--slate-200);
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav">
+            <a href="index.html" class="nav-brand">
+                <div class="nav-logo">
+                    <svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg"><path fill="#356a9d" d="M341.23,201.61l12.87,61.68c0,25.08-13.36,50.32-31.21,67.87C279,374.42,227.21,415.69,203.53,491.37V213.1a40.21,40.21,0,0,1,40.21-40.21h72A9,9,0,0,1,323,176.6Z"/><path fill="#356a9d" d="M796.47,213.06V511.59c-18.81-76-52.18-131.85-78.39-133.92-15.35-1.22-23.71-17.76-38,49.26L592.14,210.48c-.38-7.14-.88-16.7-1.52-27.35a9.71,9.71,0,0,1,9.68-10.24h156A40.15,40.15,0,0,1,796.47,213.06Z"/><path fill="#356a9d" d="M796.47,703.51V786.9a40.19,40.19,0,0,1-40.17,40.21H691.86C740.91,802.71,777.57,763.68,796.47,703.51Z"/><path fill="#356a9d" d="M679,575.44s0,0,0,.1c-4.29,37-21.19,66.16-45,87l0,0c-38.14,7-112,15.17-159.91-14.87-1.4-.87-2.75-1.74-4-2.65-1.75-1.2-3.43-2.44-5.06-3.7-99.69-73.15-23.63-213.55,2.51-247.55v-.05c.67-.92,1.35-1.73,2-2.5C482,376.19,494.49,361.75,506.53,348c.72-.87,1.35-1.59,1.83-2.12a4.91,4.91,0,0,0,.48-.58l.14-.14a4.09,4.09,0,0,1,.39-.48C537.11,312.73,562,284.51,578.9,261c42.23,95.24,91.82,235.84,91.82,235.84C679.44,526,681.7,552.23,679,575.44Z"/><path fill="#356a9d" d="M346.24,827.11H243.74a40.23,40.23,0,0,1-40.21-40.21V655.35C224.92,718.69,272.7,786.77,346.24,827.11Z"/><path fill="#1d2f5d" d="M679,575.54c-4.29,37-21.19,66.16-45,87l0,0c-73.48,64.29-212.59,49.12-249.09-63.79-23.21-71.61,20.66-130.83,75.79-197,.63-.77,3.13-3.71,6.79-7.94v-.05c10.88-12.71,31.44-36.79,39.10-45.79.72-.87,1.35-1.59,1.83-2.12-108,128.81-106.53,252.74-27.46,296.33C574.59,693.83,666.41,639.65,679,575.54Z"/></svg>
+                </div>
+                <span class="nav-title">Design System</span>
+            </a>
+            <a href="index.html" class="nav-back">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back to Index
+            </a>
+        </nav>
+
+        <header>
+            <h1>Neutral Palette</h1>
+            <p class="subtitle">The chosen gray system for the CSS Design System</p>
+
+            <div class="chosen-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                    <path d="m22 4-10 10-3-3"/>
+                </svg>
+                <h3>Slate Gray - Selected</h3>
+            </div>
+        </header>
+
+        <p class="rationale">
+            Following Refactoring UI principles, <strong>Slate Gray</strong> was chosen as the neutral palette
+            because its subtle blue undertone harmonizes perfectly with our Deep Navy (#1b2a53) and Deep Sky (#356a9d)
+            brand colors. This creates visual cohesion throughout the design system.
+        </p>
+
+        <!-- Slate Showcase -->
+        <div class="slate-showcase">
+            <div class="showcase-header">
+                <span class="showcase-title">Slate Gray Scale</span>
+                <span class="showcase-token">--neutral-* / --slate-*</span>
+            </div>
+
+            <div class="color-scale">
+                <div class="color-swatch" style="background: var(--slate-50); color: #334155;" onclick="copyColor('#f8fafc')">
+                    <span>50</span>
+                    <span class="hex">#f8fafc</span>
+                </div>
+                <div class="color-swatch" style="background: var(--slate-100); color: #334155;" onclick="copyColor('#f1f5f9')">
+                    <span>100</span>
+                    <span class="hex">#f1f5f9</span>
+                </div>
+                <div class="color-swatch" style="background: var(--slate-200); color: #334155;" onclick="copyColor('#e2e8f0')">
+                    <span>200</span>
+                    <span class="hex">#e2e8f0</span>
+                </div>
+                <div class="color-swatch" style="background: var(--slate-300); color: #334155;" onclick="copyColor('#cbd5e1')">
+                    <span>300</span>
+                    <span class="hex">#cbd5e1</span>
+                </div>
+                <div class="color-swatch" style="background: var(--slate-400); color: white;" onclick="copyColor('#94a3b8')">
+                    <span>400</span>
+                    <span class="hex">#94a3b8</span>
+                </div>
+                <div class="color-swatch" style="background: var(--slate-500); color: white;" onclick="copyColor('#64748b')">
+                    <span>500</span>
+                    <span class="hex">#64748b</span>
+                </div>
+                <div class="color-swatch" style="background: var(--slate-600); color: white;" onclick="copyColor('#475569')">
+                    <span>600</span>
+                    <span class="hex">#475569</span>
+                </div>
+                <div class="color-swatch" style="background: var(--slate-700); color: white;" onclick="copyColor('#334155')">
+                    <span>700</span>
+                    <span class="hex">#334155</span>
+                </div>
+                <div class="color-swatch" style="background: var(--slate-800); color: white;" onclick="copyColor('#1e293b')">
+                    <span>800</span>
+                    <span class="hex">#1e293b</span>
+                </div>
+                <div class="color-swatch" style="background: var(--slate-900); color: white;" onclick="copyColor('#0f172a')">
+                    <span>900</span>
+                    <span class="hex">#0f172a</span>
+                </div>
+                <div class="color-swatch" style="background: var(--slate-950); color: white;" onclick="copyColor('#020617')">
+                    <span>950</span>
+                    <span class="hex">#020617</span>
+                </div>
+            </div>
+
+            <!-- UI Preview -->
+            <div class="ui-preview">
+                <div class="preview-header">
+                    <svg class="preview-logo" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg"><path fill="#356a9d" d="M341.23,201.61l12.87,61.68c0,25.08-13.36,50.32-31.21,67.87C279,374.42,227.21,415.69,203.53,491.37V213.1a40.21,40.21,0,0,1,40.21-40.21h72A9,9,0,0,1,323,176.6Z"/><path fill="#356a9d" d="M796.47,213.06V511.59c-18.81-76-52.18-131.85-78.39-133.92-15.35-1.22-23.71-17.76-38,49.26L592.14,210.48c-.38-7.14-.88-16.7-1.52-27.35a9.71,9.71,0,0,1,9.68-10.24h156A40.15,40.15,0,0,1,796.47,213.06Z"/><path fill="#356a9d" d="M796.47,703.51V786.9a40.19,40.19,0,0,1-40.17,40.21H691.86C740.91,802.71,777.57,763.68,796.47,703.51Z"/><path fill="#356a9d" d="M679,575.44s0,0,0,.1c-4.29,37-21.19,66.16-45,87l0,0c-38.14,7-112,15.17-159.91-14.87-1.4-.87-2.75-1.74-4-2.65-1.75-1.2-3.43-2.44-5.06-3.7-99.69-73.15-23.63-213.55,2.51-247.55v-.05c.67-.92,1.35-1.73,2-2.5C482,376.19,494.49,361.75,506.53,348c.72-.87,1.35-1.59,1.83-2.12a4.91,4.91,0,0,0,.48-.58l.14-.14a4.09,4.09,0,0,1,.39-.48C537.11,312.73,562,284.51,578.9,261c42.23,95.24,91.82,235.84,91.82,235.84C679.44,526,681.7,552.23,679,575.44Z"/><path fill="#356a9d" d="M346.24,827.11H243.74a40.23,40.23,0,0,1-40.21-40.21V655.35C224.92,718.69,272.7,786.77,346.24,827.11Z"/><path fill="#1d2f5d" d="M679,575.54c-4.29,37-21.19,66.16-45,87l0,0c-73.48,64.29-212.59,49.12-249.09-63.79-23.21-71.61,20.66-130.83,75.79-197,.63-.77,3.13-3.71,6.79-7.94v-.05c10.88-12.71,31.44-36.79,39.10-45.79.72-.87,1.35-1.59,1.83-2.12-108,128.81-106.53,252.74-27.46,296.33C574.59,693.83,666.41,639.65,679,575.54Z"/></svg>
+                    <nav class="preview-nav">
+                        <span>Dashboard</span>
+                        <span>Projects</span>
+                        <span>Settings</span>
+                    </nav>
+                </div>
+                <div class="preview-body">
+                    <div class="preview-card">
+                        <h4>Project Overview</h4>
+                        <p>Slate gray creates a professional, trustworthy feel that harmonizes beautifully with the blue brand colors, providing excellent readability and visual comfort.</p>
+                    </div>
+                    <div class="preview-buttons">
+                        <button class="preview-btn preview-btn-primary">Primary Action</button>
+                        <button class="preview-btn preview-btn-secondary">Secondary</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text Samples -->
+            <div class="text-samples">
+                <h5>Text Hierarchy</h5>
+                <div class="text-row">
+                    <span class="text-label">Primary</span>
+                    <span class="text-sample" style="color: var(--slate-900); font-weight: 600;">Headings and important content (slate-900)</span>
+                </div>
+                <div class="text-row">
+                    <span class="text-label">Body</span>
+                    <span class="text-sample" style="color: var(--slate-700);">Regular paragraph text for descriptions (slate-700)</span>
+                </div>
+                <div class="text-row">
+                    <span class="text-label">Secondary</span>
+                    <span class="text-sample" style="color: var(--slate-600);">Supporting text and labels (slate-600)</span>
+                </div>
+                <div class="text-row">
+                    <span class="text-label">Muted</span>
+                    <span class="text-sample" style="color: var(--slate-500);">Tertiary information and placeholders (slate-500)</span>
+                </div>
+                <div class="text-row">
+                    <span class="text-label">Disabled</span>
+                    <span class="text-sample" style="color: var(--slate-400);">Disabled text and inactive states (slate-400)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Why Slate Section -->
+        <div class="why-section">
+            <div class="why-card">
+                <h4>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                    Brand Harmony
+                </h4>
+                <p>The subtle blue undertone in Slate creates visual cohesion with our Deep Navy and Deep Sky brand colors, ensuring a consistent, professional look.</p>
+            </div>
+            <div class="why-card">
+                <h4>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 6v6l4 2"/>
+                    </svg>
+                    Tailwind & shadcn/ui Native
+                </h4>
+                <p>Slate is the default neutral palette in Tailwind CSS and shadcn/ui, meaning excellent documentation, examples, and community support.</p>
+            </div>
+            <div class="why-card">
+                <h4>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                    Excellent Readability
+                </h4>
+                <p>Slate provides strong contrast ratios for text, meeting WCAG 2.1 AA standards while maintaining a modern, clean appearance.</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>CSS Design System - Neutral Palette Reference</p>
+            <p>Built following Refactoring UI principles</p>
+        </footer>
+    </div>
+
+    <script>
+        function copyColor(hex) {
+            navigator.clipboard.writeText(hex).then(() => {
+                // Visual feedback could be added here
+            });
+        }
+    </script>
+</body>
+</html>

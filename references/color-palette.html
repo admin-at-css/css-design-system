@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Palette - CSS Design System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Brand Colors */
+            --css-navy: #1b2a53;
+            --css-sky: #356a9d;
+
+            /* Primary - Deep Navy Blue */
+            --primary-50: #e8ecf4;
+            --primary-100: #c5d0e3;
+            --primary-200: #9fb1d0;
+            --primary-300: #7891bc;
+            --primary-400: #5a79ac;
+            --primary-500: #3d619c;
+            --primary-600: #2f5f91;
+            --primary-700: #264b7a;
+            --primary-800: #1d3a63;
+            --primary-900: #1b2a53;
+            --primary-950: #121c38;
+
+            /* Secondary - Deep Sky Blue */
+            --secondary-50: #eef5f9;
+            --secondary-100: #d5e7f2;
+            --secondary-200: #afd0e6;
+            --secondary-300: #80b4d6;
+            --secondary-400: #5a9ac4;
+            --secondary-500: #3d84b4;
+            --secondary-600: #356a9d;
+            --secondary-700: #2a5580;
+            --secondary-800: #224363;
+            --secondary-900: #1a3349;
+            --secondary-950: #0f1f2d;
+
+            /* Neutral - Slate Gray */
+            --neutral-50: #f8fafc;
+            --neutral-100: #f1f5f9;
+            --neutral-200: #e2e8f0;
+            --neutral-300: #cbd5e1;
+            --neutral-400: #94a3b8;
+            --neutral-500: #64748b;
+            --neutral-600: #475569;
+            --neutral-700: #334155;
+            --neutral-800: #1e293b;
+            --neutral-900: #0f172a;
+            --neutral-950: #020617;
+
+            /* Success */
+            --success-50: #f0fdf4;
+            --success-100: #dcfce7;
+            --success-200: #bbf7d0;
+            --success-300: #86efac;
+            --success-400: #4ade80;
+            --success-500: #22c55e;
+            --success-600: #16a34a;
+            --success-700: #15803d;
+            --success-800: #166534;
+            --success-900: #14532d;
+
+            /* Error */
+            --error-50: #fef2f2;
+            --error-100: #fee2e2;
+            --error-200: #fecaca;
+            --error-300: #fca5a5;
+            --error-400: #f87171;
+            --error-500: #ef4444;
+            --error-600: #dc2626;
+            --error-700: #b91c1c;
+            --error-800: #991b1b;
+            --error-900: #7f1d1d;
+
+            /* Warning */
+            --warning-50: #fffbeb;
+            --warning-100: #fef3c7;
+            --warning-200: #fde68a;
+            --warning-300: #fcd34d;
+            --warning-400: #fbbf24;
+            --warning-500: #f59e0b;
+            --warning-600: #d97706;
+            --warning-700: #b45309;
+            --warning-800: #92400e;
+            --warning-900: #78350f;
+
+            /* Info */
+            --info-50: #eff6ff;
+            --info-100: #dbeafe;
+            --info-200: #bfdbfe;
+            --info-300: #93c5fd;
+            --info-400: #60a5fa;
+            --info-500: #3b82f6;
+            --info-600: #2563eb;
+            --info-700: #1d4ed8;
+            --info-800: #1e40af;
+            --info-900: #1e3a8a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--neutral-50);
+            color: var(--neutral-800);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Navigation */
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--neutral-200);
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--css-navy);
+        }
+
+        .nav-logo {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-logo svg {
+            width: 40px;
+            height: 40px;
+            font-size: 0.875rem;
+        }
+
+        .nav-title {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .nav-back {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--neutral-500);
+            text-decoration: none;
+            font-size: 0.875rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .nav-back:hover {
+            background: var(--neutral-100);
+            color: var(--neutral-700);
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--css-navy);
+            letter-spacing: -0.025em;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--neutral-500);
+            font-size: 1.1rem;
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--css-navy);
+        }
+
+        .section-description {
+            color: var(--neutral-500);
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+
+        /* Brand Colors Hero */
+        .brand-hero {
+            background: linear-gradient(135deg, var(--css-navy) 0%, var(--css-sky) 100%);
+            border-radius: 20px;
+            padding: 3rem;
+            color: white;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .brand-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 60%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.05);
+            transform: rotate(-15deg);
+        }
+
+        .brand-hero h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .brand-swatches {
+            display: flex;
+            gap: 1.5rem;
+            position: relative;
+        }
+
+        .brand-swatch {
+            flex: 1;
+            max-width: 200px;
+        }
+
+        .brand-color {
+            height: 100px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .brand-color:hover {
+            transform: scale(1.05);
+        }
+
+        .brand-color-name {
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .brand-color-hex {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+
+        .brand-info {
+            font-size: 0.875rem;
+            opacity: 0.9;
+        }
+
+        /* Color Palette Grid */
+        .palette {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--neutral-200);
+        }
+
+        .palette-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--neutral-100);
+        }
+
+        .palette-name {
+            font-weight: 700;
+            font-size: 1.125rem;
+            color: var(--neutral-800);
+        }
+
+        .palette-token {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--neutral-400);
+            background: var(--neutral-100);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .color-scale {
+            display: flex;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .color-swatch {
+            flex: 1;
+            height: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.2s, z-index 0s;
+            position: relative;
+        }
+
+        .color-swatch:hover {
+            transform: scaleY(1.15) scaleX(1.05);
+            z-index: 10;
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .color-shade {
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .color-hex {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.6rem;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .color-swatch:hover .color-hex {
+            opacity: 1;
+        }
+
+        /* Palette Grid Layout */
+        .palettes-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 1000px) {
+            .palettes-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Semantic Colors */
+        .semantic-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 900px) {
+            .semantic-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .semantic-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .semantic-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--neutral-200);
+        }
+
+        .semantic-preview {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        .semantic-shades {
+            display: flex;
+            height: 32px;
+        }
+
+        .semantic-shade {
+            flex: 1;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .semantic-shade:hover {
+            transform: scaleY(1.3);
+            z-index: 10;
+        }
+
+        .semantic-info {
+            padding: 1rem;
+        }
+
+        .semantic-name {
+            font-weight: 600;
+            color: var(--neutral-800);
+            margin-bottom: 0.25rem;
+        }
+
+        .semantic-usage {
+            font-size: 0.8rem;
+            color: var(--neutral-500);
+        }
+
+        /* Usage Tokens */
+        .usage-section {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--neutral-200);
+        }
+
+        .usage-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        @media (max-width: 800px) {
+            .usage-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .usage-category h4 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--neutral-400);
+            margin-bottom: 1rem;
+        }
+
+        .usage-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--neutral-100);
+        }
+
+        .usage-item:last-child {
+            border-bottom: none;
+        }
+
+        .usage-swatch {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            flex-shrink: 0;
+        }
+
+        .usage-details {
+            flex: 1;
+        }
+
+        .usage-name {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--neutral-700);
+        }
+
+        .usage-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--neutral-400);
+        }
+
+        /* Contrast Checker */
+        .contrast-section {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--neutral-200);
+        }
+
+        .contrast-demo {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        @media (max-width: 700px) {
+            .contrast-demo {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .contrast-card {
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .contrast-ratio {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .contrast-label {
+            font-size: 0.875rem;
+            opacity: 0.9;
+            margin-bottom: 0.25rem;
+        }
+
+        .contrast-status {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 100px;
+            display: inline-block;
+        }
+
+        .contrast-pass {
+            background: rgba(34, 197, 94, 0.2);
+            color: #15803d;
+        }
+
+        .contrast-fail {
+            background: rgba(239, 68, 68, 0.2);
+            color: #b91c1c;
+        }
+
+        /* Toast notification */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--neutral-800);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        .toast code {
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.125rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--neutral-200);
+            color: var(--neutral-400);
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav">
+            <a href="index.html" class="nav-brand">
+                <div class="nav-logo">
+                    <svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg"><path fill="#356a9d" d="M341.23,201.61l12.87,61.68c0,25.08-13.36,50.32-31.21,67.87C279,374.42,227.21,415.69,203.53,491.37V213.1a40.21,40.21,0,0,1,40.21-40.21h72A9,9,0,0,1,323,176.6Z"/><path fill="#356a9d" d="M796.47,213.06V511.59c-18.81-76-52.18-131.85-78.39-133.92-15.35-1.22-23.71-17.76-38,49.26L592.14,210.48c-.38-7.14-.88-16.7-1.52-27.35a9.71,9.71,0,0,1,9.68-10.24h156A40.15,40.15,0,0,1,796.47,213.06Z"/><path fill="#356a9d" d="M796.47,703.51V786.9a40.19,40.19,0,0,1-40.17,40.21H691.86C740.91,802.71,777.57,763.68,796.47,703.51Z"/><path fill="#356a9d" d="M679,575.44s0,0,0,.1c-4.29,37-21.19,66.16-45,87l0,0c-38.14,7-112,15.17-159.91-14.87-1.4-.87-2.75-1.74-4-2.65-1.75-1.2-3.43-2.44-5.06-3.7-99.69-73.15-23.63-213.55,2.51-247.55v-.05c.67-.92,1.35-1.73,2-2.5C482,376.19,494.49,361.75,506.53,348c.72-.87,1.35-1.59,1.83-2.12a4.91,4.91,0,0,0,.48-.58l.14-.14a4.09,4.09,0,0,1,.39-.48C537.11,312.73,562,284.51,578.9,261c42.23,95.24,91.82,235.84,91.82,235.84C679.44,526,681.7,552.23,679,575.44Z"/><path fill="#356a9d" d="M346.24,827.11H243.74a40.23,40.23,0,0,1-40.21-40.21V655.35C224.92,718.69,272.7,786.77,346.24,827.11Z"/><path fill="#1d2f5d" d="M679,575.54c-4.29,37-21.19,66.16-45,87l0,0c-73.48,64.29-212.59,49.12-249.09-63.79-23.21-71.61,20.66-130.83,75.79-197,.63-.77,3.13-3.71,6.79-7.94v-.05c10.88-12.71,31.44-36.79,39.10-45.79.72-.87,1.35-1.59,1.83-2.12-108,128.81-106.53,252.74-27.46,296.33C574.59,693.83,666.41,639.65,679,575.54Z"/></svg>
+                </div>
+                <span class="nav-title">Design System</span>
+            </a>
+            <a href="index.html" class="nav-back">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back to Index
+            </a>
+        </nav>
+
+        <header>
+            <h1>Color Palette</h1>
+            <p class="subtitle">Complete color system with brand colors, semantic palettes, and accessibility guidelines</p>
+        </header>
+
+        <!-- Brand Colors Hero -->
+        <div class="brand-hero">
+            <h2>Brand Colors</h2>
+            <div class="brand-swatches">
+                <div class="brand-swatch">
+                    <div class="brand-color" style="background: #1b2a53; color: white;" onclick="copyColor('#1b2a53', 'Deep Navy')">
+                        <span class="brand-color-name">Deep Navy</span>
+                        <span class="brand-color-hex">#1b2a53</span>
+                    </div>
+                    <p class="brand-info">Primary brand color - Headers, primary buttons, emphasis</p>
+                </div>
+                <div class="brand-swatch">
+                    <div class="brand-color" style="background: #356a9d; color: white;" onclick="copyColor('#356a9d', 'Deep Sky')">
+                        <span class="brand-color-name">Deep Sky</span>
+                        <span class="brand-color-hex">#356a9d</span>
+                    </div>
+                    <p class="brand-info">Secondary brand color - Accents, links, highlights</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Primary & Secondary Palettes -->
+        <section class="section">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Brand Palettes</h2>
+                    <p class="section-description">Full tint/shade scales for primary and secondary colors</p>
+                </div>
+            </div>
+
+            <div class="palettes-grid">
+                <!-- Primary Palette -->
+                <div class="palette">
+                    <div class="palette-header">
+                        <span class="palette-name">Primary (Deep Navy)</span>
+                        <span class="palette-token">--primary-*</span>
+                    </div>
+                    <div class="color-scale">
+                        <div class="color-swatch" style="background: var(--primary-50); color: #1b2a53;" onclick="copyColor('#e8ecf4', 'primary-50')">
+                            <span class="color-shade">50</span>
+                            <span class="color-hex">#e8ecf4</span>
+                        </div>
+                        <div class="color-swatch" style="background: var(--primary-100); color: #1b2a53;" onclick="copyColor('#c5d0e3', 'primary-100')">
+                            <span class="color-shade">100</span>
+                            <span class="color-hex">#c5d0e3</span>
+                        </div>
+                        <div class="color-swatch" style="background: var(--primary-200); color: #1b2a53;" onclick="copyColor('#9fb1d0', 'primary-200')">
+                            <span class="color-shade">200</span>
+                            <span class="color-hex">#9fb1d0</span>
+                        </div>
+                        <div class="color-swatch" style="background: var(--primary-300); color: #1b2a53;" onclick="copyColor('#7891bc', 'primary-300')">
+                            <span class="color-shade">300</span>
+                            <span class="color-hex">#7891bc</span>
+                        </div>
+                        <div class="color-swatch" style="background: var(--primary-400); color: white;" onclick="copyColor('#5a79ac', 'primary-400')">
+                            <span class="color-shade">400</span>
+                            <span class="color-hex">#5a79ac</span>
+                        </div>
+                        <div class="color-swatch" style="background: var(--primary-500); color: white;" onclick="copyColor('#3d619c', 'primary-500')">
+                            <span class="color-shade">500</span>
+                            <span class="color-hex">#3d619c</span>
+                        </div>
+                        <div class="color-swatch" style="background: var(--primary-600); color: white;" onclick="copyColor('#2f5f91', 'primary-600')">
+                            <span class="color-shade">600</span>
+                            <span class="color-hex">#2f5f91</span>
+                        </div>
+                        <div class="color-swatch" style="background: var(--primary-700); color: white;" onclick="copyColor('#264b7a', 'primary-700')">
+                            <span class="color-shade">700</span>
+                            <span class="color-hex">#264b7a</span>
+                        </div>
+                        <div class="color-swatch" style="background: var(--primary-800); color: white;" onclick="copyColor('#1d3a63', 'primary-800')">
+                            <span class="color-shade">800</span>
+                            <span class="color-hex">#1d3a63</span>
+                        </div>
+                        <div class="color-swatch" style="background: var(--primary-900); color: white;" onclick="copyColor('#1b2a53', 'primary-900')">
+                            <span class="color-shade">900</span>
+                            <span class="color-hex">#1b2a53</span>
+                        </div>
+                        <div class="color-swatch" style="background: var(--primary-950); color: white;" onclick="copyColor('#121c38', 'primary-950')">
+                            <span class="color-shade">950</span>
+                            <span class="color-hex">#121c38</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Secondary Palette -->
+                <div class="palette">
+                    <div class="palette-header">
+                        <span class="palette-name">Secondary (Deep Sky)</span>
+                        <span class="palette-token">--secondary-*</span>
+                    </div>
+                    <div class="color-scale">
+                        <div class="color-swatch" style="background: var(--secondary-50); color: #1a3349;" onclick="copyColor('#eef5f9', 'secondary-50')">
+                            <span class="color-shade">50</span>
+                            <span class="color-hex">#eef5f9</span>
+                        </div>
+                        <div class="color-swatch" style="background: var(--secondary-100); color: #1a3349;" onclick="copyColor('#d5e7f2', 'secondary-100')">
+                            <span class="color-shade">100</span>
+                            <span class="color-hex">#d5e7f2</span>
+                        </div>
+                        <div class="color-swatch" style="background: var(--secondary-200); color: #1a3349;" onclick="copyColor('#afd0e6', 'secondary-200')">
+                            <span class="color-shade">200</span>
+                            <span class="color-hex">#afd0e6</span>
+                        </div>
+                        <div class="color-swatch" style="background: var(--secondary-300); color: #1a3349;" onclick="copyColor('#80b4d6', 'secondary-300')">
+                            <span class="color-shade">300</span>
+                            <span class="color-hex">#80b4d6</span>
+                        </div>
+                        <div class="color-swatch" style="background: var(--secondary-400); color: white;" onclick="copyColor('#5a9ac4', 'secondary-400')">
+                            <span class="color-shade">400</span>
+                            <span class="color-hex">#5a9ac4</span>
+                        </div>
+                        <div class="color-swatch" style="background: var(--secondary-500); color: white;" onclick="copyColor('#3d84b4', 'secondary-500')">
+                            <span class="color-shade">500</span>
+                            <span class="color-hex">#3d84b4</span>
+                        </div>
+                        <div class="color-swatch" style="background: var(--secondary-600); color: white;" onclick="copyColor('#356a9d', 'secondary-600')">
+                            <span class="color-shade">600</span>
+                            <span class="color-hex">#356a9d</span>
+                        </div>
+                        <div class="color-swatch" style="background: var(--secondary-700); color: white;" onclick="copyColor('#2a5580', 'secondary-700')">
+                            <span class="color-shade">700</span>
+                            <span class="color-hex">#2a5580</span>
+                        </div>
+                        <div class="color-swatch" style="background: var(--secondary-800); color: white;" onclick="copyColor('#224363', 'secondary-800')">
+                            <span class="color-shade">800</span>
+                            <span class="color-hex">#224363</span>
+                        </div>
+                        <div class="color-swatch" style="background: var(--secondary-900); color: white;" onclick="copyColor('#1a3349', 'secondary-900')">
+                            <span class="color-shade">900</span>
+                            <span class="color-hex">#1a3349</span>
+                        </div>
+                        <div class="color-swatch" style="background: var(--secondary-950); color: white;" onclick="copyColor('#0f1f2d', 'secondary-950')">
+                            <span class="color-shade">950</span>
+                            <span class="color-hex">#0f1f2d</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Neutral Palette -->
+                <div class="palette" style="grid-column: 1 / -1;">
+                    <div class="palette-header">
+                        <span class="palette-name">Neutral (Slate Gray)</span>
+                        <span class="palette-token">--neutral-*</span>
+                    </div>
+                    <div class="color-scale">
+                        <div class="color-swatch" style="background: var(--neutral-50); color: #334155;" onclick="copyColor('#f8fafc', 'neutral-50')">
+                            <span class="color-shade">50</span>
+                            <span class="color-hex">#f8fafc</span>
+                        </div>
+                        <div class="color-swatch" style="background: var(--neutral-100); color: #334155;" onclick="copyColor('#f1f5f9', 'neutral-100')">
+                            <span class="color-shade">100</span>
+                            <span class="color-hex">#f1f5f9</span>
+                        </div>
+                        <div class="color-swatch" style="background: var(--neutral-200); color: #334155;" onclick="copyColor('#e2e8f0', 'neutral-200')">
+                            <span class="color-shade">200</span>
+                            <span class="color-hex">#e2e8f0</span>
+                        </div>
+                        <div class="color-swatch" style="background: var(--neutral-300); color: #334155;" onclick="copyColor('#cbd5e1', 'neutral-300')">
+                            <span class="color-shade">300</span>
+                            <span class="color-hex">#cbd5e1</span>
+                        </div>
+                        <div class="color-swatch" style="background: var(--neutral-400); color: white;" onclick="copyColor('#94a3b8', 'neutral-400')">
+                            <span class="color-shade">400</span>
+                            <span class="color-hex">#94a3b8</span>
+                        </div>
+                        <div class="color-swatch" style="background: var(--neutral-500); color: white;" onclick="copyColor('#64748b', 'neutral-500')">
+                            <span class="color-shade">500</span>
+                            <span class="color-hex">#64748b</span>
+                        </div>
+                        <div class="color-swatch" style="background: var(--neutral-600); color: white;" onclick="copyColor('#475569', 'neutral-600')">
+                            <span class="color-shade">600</span>
+                            <span class="color-hex">#475569</span>
+                        </div>
+                        <div class="color-swatch" style="background: var(--neutral-700); color: white;" onclick="copyColor('#334155', 'neutral-700')">
+                            <span class="color-shade">700</span>
+                            <span class="color-hex">#334155</span>
+                        </div>
+                        <div class="color-swatch" style="background: var(--neutral-800); color: white;" onclick="copyColor('#1e293b', 'neutral-800')">
+                            <span class="color-shade">800</span>
+                            <span class="color-hex">#1e293b</span>
+                        </div>
+                        <div class="color-swatch" style="background: var(--neutral-900); color: white;" onclick="copyColor('#0f172a', 'neutral-900')">
+                            <span class="color-shade">900</span>
+                            <span class="color-hex">#0f172a</span>
+                        </div>
+                        <div class="color-swatch" style="background: var(--neutral-950); color: white;" onclick="copyColor('#020617', 'neutral-950')">
+                            <span class="color-shade">950</span>
+                            <span class="color-hex">#020617</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Semantic Colors -->
+        <section class="section">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Semantic Colors</h2>
+                    <p class="section-description">Status colors for feedback and system states</p>
+                </div>
+            </div>
+
+            <div class="semantic-grid">
+                <!-- Success -->
+                <div class="semantic-card">
+                    <div class="semantic-preview" style="background: var(--success-500);">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                    </div>
+                    <div class="semantic-shades">
+                        <div class="semantic-shade" style="background: var(--success-50);" onclick="copyColor('#f0fdf4', 'success-50')"></div>
+                        <div class="semantic-shade" style="background: var(--success-100);" onclick="copyColor('#dcfce7', 'success-100')"></div>
+                        <div class="semantic-shade" style="background: var(--success-200);" onclick="copyColor('#bbf7d0', 'success-200')"></div>
+                        <div class="semantic-shade" style="background: var(--success-300);" onclick="copyColor('#86efac', 'success-300')"></div>
+                        <div class="semantic-shade" style="background: var(--success-400);" onclick="copyColor('#4ade80', 'success-400')"></div>
+                        <div class="semantic-shade" style="background: var(--success-500);" onclick="copyColor('#22c55e', 'success-500')"></div>
+                        <div class="semantic-shade" style="background: var(--success-600);" onclick="copyColor('#16a34a', 'success-600')"></div>
+                        <div class="semantic-shade" style="background: var(--success-700);" onclick="copyColor('#15803d', 'success-700')"></div>
+                        <div class="semantic-shade" style="background: var(--success-800);" onclick="copyColor('#166534', 'success-800')"></div>
+                        <div class="semantic-shade" style="background: var(--success-900);" onclick="copyColor('#14532d', 'success-900')"></div>
+                    </div>
+                    <div class="semantic-info">
+                        <div class="semantic-name">Success</div>
+                        <div class="semantic-usage">Confirmations, completed states</div>
+                    </div>
+                </div>
+
+                <!-- Error -->
+                <div class="semantic-card">
+                    <div class="semantic-preview" style="background: var(--error-500);">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="15" y1="9" x2="9" y2="15"/>
+                            <line x1="9" y1="9" x2="15" y2="15"/>
+                        </svg>
+                    </div>
+                    <div class="semantic-shades">
+                        <div class="semantic-shade" style="background: var(--error-50);" onclick="copyColor('#fef2f2', 'error-50')"></div>
+                        <div class="semantic-shade" style="background: var(--error-100);" onclick="copyColor('#fee2e2', 'error-100')"></div>
+                        <div class="semantic-shade" style="background: var(--error-200);" onclick="copyColor('#fecaca', 'error-200')"></div>
+                        <div class="semantic-shade" style="background: var(--error-300);" onclick="copyColor('#fca5a5', 'error-300')"></div>
+                        <div class="semantic-shade" style="background: var(--error-400);" onclick="copyColor('#f87171', 'error-400')"></div>
+                        <div class="semantic-shade" style="background: var(--error-500);" onclick="copyColor('#ef4444', 'error-500')"></div>
+                        <div class="semantic-shade" style="background: var(--error-600);" onclick="copyColor('#dc2626', 'error-600')"></div>
+                        <div class="semantic-shade" style="background: var(--error-700);" onclick="copyColor('#b91c1c', 'error-700')"></div>
+                        <div class="semantic-shade" style="background: var(--error-800);" onclick="copyColor('#991b1b', 'error-800')"></div>
+                        <div class="semantic-shade" style="background: var(--error-900);" onclick="copyColor('#7f1d1d', 'error-900')"></div>
+                    </div>
+                    <div class="semantic-info">
+                        <div class="semantic-name">Error</div>
+                        <div class="semantic-usage">Errors, destructive actions</div>
+                    </div>
+                </div>
+
+                <!-- Warning -->
+                <div class="semantic-card">
+                    <div class="semantic-preview" style="background: var(--warning-500);">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                            <line x1="12" y1="9" x2="12" y2="13"/>
+                            <line x1="12" y1="17" x2="12.01" y2="17"/>
+                        </svg>
+                    </div>
+                    <div class="semantic-shades">
+                        <div class="semantic-shade" style="background: var(--warning-50);" onclick="copyColor('#fffbeb', 'warning-50')"></div>
+                        <div class="semantic-shade" style="background: var(--warning-100);" onclick="copyColor('#fef3c7', 'warning-100')"></div>
+                        <div class="semantic-shade" style="background: var(--warning-200);" onclick="copyColor('#fde68a', 'warning-200')"></div>
+                        <div class="semantic-shade" style="background: var(--warning-300);" onclick="copyColor('#fcd34d', 'warning-300')"></div>
+                        <div class="semantic-shade" style="background: var(--warning-400);" onclick="copyColor('#fbbf24', 'warning-400')"></div>
+                        <div class="semantic-shade" style="background: var(--warning-500);" onclick="copyColor('#f59e0b', 'warning-500')"></div>
+                        <div class="semantic-shade" style="background: var(--warning-600);" onclick="copyColor('#d97706', 'warning-600')"></div>
+                        <div class="semantic-shade" style="background: var(--warning-700);" onclick="copyColor('#b45309', 'warning-700')"></div>
+                        <div class="semantic-shade" style="background: var(--warning-800);" onclick="copyColor('#92400e', 'warning-800')"></div>
+                        <div class="semantic-shade" style="background: var(--warning-900);" onclick="copyColor('#78350f', 'warning-900')"></div>
+                    </div>
+                    <div class="semantic-info">
+                        <div class="semantic-name">Warning</div>
+                        <div class="semantic-usage">Cautions, attention needed</div>
+                    </div>
+                </div>
+
+                <!-- Info -->
+                <div class="semantic-card">
+                    <div class="semantic-preview" style="background: var(--info-500);">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="16" x2="12" y2="12"/>
+                            <line x1="12" y1="8" x2="12.01" y2="8"/>
+                        </svg>
+                    </div>
+                    <div class="semantic-shades">
+                        <div class="semantic-shade" style="background: var(--info-50);" onclick="copyColor('#eff6ff', 'info-50')"></div>
+                        <div class="semantic-shade" style="background: var(--info-100);" onclick="copyColor('#dbeafe', 'info-100')"></div>
+                        <div class="semantic-shade" style="background: var(--info-200);" onclick="copyColor('#bfdbfe', 'info-200')"></div>
+                        <div class="semantic-shade" style="background: var(--info-300);" onclick="copyColor('#93c5fd', 'info-300')"></div>
+                        <div class="semantic-shade" style="background: var(--info-400);" onclick="copyColor('#60a5fa', 'info-400')"></div>
+                        <div class="semantic-shade" style="background: var(--info-500);" onclick="copyColor('#3b82f6', 'info-500')"></div>
+                        <div class="semantic-shade" style="background: var(--info-600);" onclick="copyColor('#2563eb', 'info-600')"></div>
+                        <div class="semantic-shade" style="background: var(--info-700);" onclick="copyColor('#1d4ed8', 'info-700')"></div>
+                        <div class="semantic-shade" style="background: var(--info-800);" onclick="copyColor('#1e40af', 'info-800')"></div>
+                        <div class="semantic-shade" style="background: var(--info-900);" onclick="copyColor('#1e3a8a', 'info-900')"></div>
+                    </div>
+                    <div class="semantic-info">
+                        <div class="semantic-name">Info</div>
+                        <div class="semantic-usage">Information, tips, help</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Usage Tokens -->
+        <section class="section">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Usage Tokens</h2>
+                    <p class="section-description">Semantic tokens for consistent application</p>
+                </div>
+            </div>
+
+            <div class="usage-section">
+                <div class="usage-grid">
+                    <div class="usage-category">
+                        <h4>Text Colors</h4>
+                        <div class="usage-item">
+                            <div class="usage-swatch" style="background: #0f172a;"></div>
+                            <div class="usage-details">
+                                <div class="usage-name">Primary Text</div>
+                                <div class="usage-value">text.primary / slate-900</div>
+                            </div>
+                        </div>
+                        <div class="usage-item">
+                            <div class="usage-swatch" style="background: #475569;"></div>
+                            <div class="usage-details">
+                                <div class="usage-name">Secondary Text</div>
+                                <div class="usage-value">text.secondary / slate-600</div>
+                            </div>
+                        </div>
+                        <div class="usage-item">
+                            <div class="usage-swatch" style="background: #64748b;"></div>
+                            <div class="usage-details">
+                                <div class="usage-name">Tertiary Text</div>
+                                <div class="usage-value">text.tertiary / slate-500</div>
+                            </div>
+                        </div>
+                        <div class="usage-item">
+                            <div class="usage-swatch" style="background: #94a3b8;"></div>
+                            <div class="usage-details">
+                                <div class="usage-name">Disabled Text</div>
+                                <div class="usage-value">text.disabled / slate-400</div>
+                            </div>
+                        </div>
+                        <div class="usage-item">
+                            <div class="usage-swatch" style="background: #2563eb;"></div>
+                            <div class="usage-details">
+                                <div class="usage-name">Link Text</div>
+                                <div class="usage-value">text.link / blue-600</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="usage-category">
+                        <h4>Background Colors</h4>
+                        <div class="usage-item">
+                            <div class="usage-swatch" style="background: #ffffff; border: 1px solid #e2e8f0;"></div>
+                            <div class="usage-details">
+                                <div class="usage-name">Default</div>
+                                <div class="usage-value">background.default / white</div>
+                            </div>
+                        </div>
+                        <div class="usage-item">
+                            <div class="usage-swatch" style="background: #f8fafc;"></div>
+                            <div class="usage-details">
+                                <div class="usage-name">Subtle</div>
+                                <div class="usage-value">background.subtle / slate-50</div>
+                            </div>
+                        </div>
+                        <div class="usage-item">
+                            <div class="usage-swatch" style="background: #f1f5f9;"></div>
+                            <div class="usage-details">
+                                <div class="usage-name">Muted</div>
+                                <div class="usage-value">background.muted / slate-100</div>
+                            </div>
+                        </div>
+                        <div class="usage-item">
+                            <div class="usage-swatch" style="background: #e2e8f0;"></div>
+                            <div class="usage-details">
+                                <div class="usage-name">Emphasis</div>
+                                <div class="usage-value">background.emphasis / slate-200</div>
+                            </div>
+                        </div>
+                        <div class="usage-item">
+                            <div class="usage-swatch" style="background: #0f172a;"></div>
+                            <div class="usage-details">
+                                <div class="usage-name">Inverse</div>
+                                <div class="usage-value">background.inverse / slate-900</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="usage-category">
+                        <h4>Border Colors</h4>
+                        <div class="usage-item">
+                            <div class="usage-swatch" style="background: #e2e8f0;"></div>
+                            <div class="usage-details">
+                                <div class="usage-name">Default Border</div>
+                                <div class="usage-value">border.default / slate-200</div>
+                            </div>
+                        </div>
+                        <div class="usage-item">
+                            <div class="usage-swatch" style="background: #f1f5f9;"></div>
+                            <div class="usage-details">
+                                <div class="usage-name">Muted Border</div>
+                                <div class="usage-value">border.muted / slate-100</div>
+                            </div>
+                        </div>
+                        <div class="usage-item">
+                            <div class="usage-swatch" style="background: #cbd5e1;"></div>
+                            <div class="usage-details">
+                                <div class="usage-name">Emphasis Border</div>
+                                <div class="usage-value">border.emphasis / slate-300</div>
+                            </div>
+                        </div>
+                        <div class="usage-item">
+                            <div class="usage-swatch" style="background: #94a3b8;"></div>
+                            <div class="usage-details">
+                                <div class="usage-name">Strong Border</div>
+                                <div class="usage-value">border.strong / slate-400</div>
+                            </div>
+                        </div>
+                        <div class="usage-item">
+                            <div class="usage-swatch" style="background: #3b82f6;"></div>
+                            <div class="usage-details">
+                                <div class="usage-name">Focus Ring</div>
+                                <div class="usage-value">border.focus / blue-500</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contrast Checker -->
+        <section class="section">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Contrast Ratios</h2>
+                    <p class="section-description">WCAG 2.1 AA compliance for text on backgrounds</p>
+                </div>
+            </div>
+
+            <div class="contrast-section">
+                <p style="color: var(--neutral-600); margin-bottom: 1rem;">
+                    Text must meet minimum contrast ratios: <strong>4.5:1</strong> for normal text, <strong>3:1</strong> for large text (18px+ or 14px bold).
+                </p>
+                <div class="contrast-demo">
+                    <div class="contrast-card" style="background: #1b2a53; color: white;">
+                        <div class="contrast-ratio">12.6:1</div>
+                        <div class="contrast-label">White on Navy</div>
+                        <span class="contrast-status contrast-pass">AAA Pass</span>
+                    </div>
+                    <div class="contrast-card" style="background: white; color: #0f172a; border: 1px solid #e2e8f0;">
+                        <div class="contrast-ratio">17.1:1</div>
+                        <div class="contrast-label">Slate 900 on White</div>
+                        <span class="contrast-status contrast-pass">AAA Pass</span>
+                    </div>
+                    <div class="contrast-card" style="background: #f8fafc; color: #475569;">
+                        <div class="contrast-ratio">6.3:1</div>
+                        <div class="contrast-label">Slate 600 on Slate 50</div>
+                        <span class="contrast-status contrast-pass">AA Pass</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>CSS Design System - Color Palette Reference</p>
+            <p style="margin-top: 0.5rem;">Click any color to copy its hex value</p>
+        </footer>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        Copied <code id="toast-value"></code> to clipboard
+    </div>
+
+    <script>
+        function copyColor(hex, name) {
+            navigator.clipboard.writeText(hex).then(() => {
+                const toast = document.getElementById('toast');
+                const toastValue = document.getElementById('toast-value');
+                toastValue.textContent = hex;
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>

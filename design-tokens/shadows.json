@@ -1,0 +1,90 @@
+{
+  "$schema": "https://design-tokens.json-schema.org/",
+  "name": "CSS Design System Shadows",
+  "description": "Shadow tokens following Refactoring UI two-part shadow technique for realistic depth",
+
+  "shadow": {
+    "none": {
+      "value": "none",
+      "description": "No shadow"
+    },
+    "xs": {
+      "value": "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+      "description": "Subtle lift, inputs"
+    },
+    "sm": {
+      "value": "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+      "description": "Slight elevation, buttons, cards",
+      "components": {
+        "direct": "0 1px 3px 0 rgb(0 0 0 / 0.1)",
+        "ambient": "0 1px 2px -1px rgb(0 0 0 / 0.1)"
+      }
+    },
+    "md": {
+      "value": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+      "description": "Moderate elevation, dropdowns, popovers",
+      "components": {
+        "direct": "0 4px 6px -1px rgb(0 0 0 / 0.1)",
+        "ambient": "0 2px 4px -2px rgb(0 0 0 / 0.1)"
+      }
+    },
+    "lg": {
+      "value": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+      "description": "High elevation, modals, floating panels",
+      "components": {
+        "direct": "0 10px 15px -3px rgb(0 0 0 / 0.1)",
+        "ambient": "0 4px 6px -4px rgb(0 0 0 / 0.1)"
+      }
+    },
+    "xl": {
+      "value": "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)",
+      "description": "Maximum elevation, dialogs, overlays",
+      "components": {
+        "direct": "0 20px 25px -5px rgb(0 0 0 / 0.1)",
+        "ambient": "0 8px 10px -6px rgb(0 0 0 / 0.1)"
+      }
+    },
+    "2xl": {
+      "value": "0 25px 50px -12px rgb(0 0 0 / 0.25)",
+      "description": "Extreme elevation, hero images, dramatic effects"
+    },
+    "inner": {
+      "value": "inset 0 2px 4px 0 rgb(0 0 0 / 0.05)",
+      "description": "Inset shadow for pressed states, inputs"
+    },
+    "outline": {
+      "value": "0 0 0 3px rgb(59 130 246 / 0.5)",
+      "description": "Focus ring shadow"
+    },
+    "outline-primary": {
+      "value": "0 0 0 3px rgb(27 42 83 / 0.3)",
+      "description": "Primary color focus ring"
+    }
+  },
+
+  "elevation": {
+    "description": "Semantic elevation levels for consistent z-axis usage",
+    "0": { "shadow": "none", "zIndex": "0", "description": "Flat, no elevation" },
+    "1": { "shadow": "shadow-xs", "zIndex": "10", "description": "Slight lift" },
+    "2": { "shadow": "shadow-sm", "zIndex": "20", "description": "Raised cards" },
+    "3": { "shadow": "shadow-md", "zIndex": "30", "description": "Dropdowns, menus" },
+    "4": { "shadow": "shadow-lg", "zIndex": "40", "description": "Modals, dialogs" },
+    "5": { "shadow": "shadow-xl", "zIndex": "50", "description": "Top-level overlays" }
+  },
+
+  "zIndex": {
+    "hide": { "value": "-1", "description": "Hidden elements" },
+    "auto": { "value": "auto", "description": "Default stacking" },
+    "base": { "value": "0", "description": "Base level" },
+    "docked": { "value": "10", "description": "Docked elements" },
+    "dropdown": { "value": "1000", "description": "Dropdown menus" },
+    "sticky": { "value": "1020", "description": "Sticky headers" },
+    "banner": { "value": "1030", "description": "Banner notifications" },
+    "overlay": { "value": "1040", "description": "Overlays, backdrops" },
+    "modal": { "value": "1050", "description": "Modal dialogs" },
+    "popover": { "value": "1060", "description": "Popovers, tooltips" },
+    "skipLink": { "value": "1070", "description": "Skip navigation links" },
+    "toast": { "value": "1080", "description": "Toast notifications" },
+    "tooltip": { "value": "1090", "description": "Tooltips (highest)" }
+  }
+}

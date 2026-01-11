@@ -1,0 +1,195 @@
+/**
+ * CSS Design System - Global Styles
+ *
+ * This file imports the reset, tokens, and sets up global styles.
+ * Import this file at the root of your application.
+ */
+
+/* Import reset and tokens */
+@import './reset.css';
+@import '../design-tokens/tokens.css';
+
+/* ============================================
+ * BASE STYLES
+ * ============================================ */
+
+html {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  color: var(--text-primary);
+  background-color: var(--bg-default);
+}
+
+body {
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--font-bold);
+  color: var(--color-neutral-900);
+}
+
+h1 {
+  font-size: var(--text-4xl);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+}
+
+h2 {
+  font-size: var(--text-3xl);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+}
+
+h3 {
+  font-size: var(--text-2xl);
+  line-height: var(--leading-snug);
+}
+
+h4 {
+  font-size: var(--text-xl);
+  line-height: var(--leading-snug);
+}
+
+h5 {
+  font-size: var(--text-lg);
+  line-height: var(--leading-normal);
+}
+
+h6 {
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+}
+
+/* Links */
+a {
+  color: var(--text-link);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-in-out);
+}
+
+a:hover {
+  color: var(--text-link-hover);
+  text-decoration: underline;
+}
+
+/* Focus styles */
+:focus-visible {
+  outline: none;
+  box-shadow: var(--ring);
+  border-radius: var(--radius-sm);
+}
+
+/* Selection */
+::selection {
+  background-color: var(--color-primary-100);
+  color: var(--color-primary-900);
+}
+
+/* Code */
+code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background-color: var(--bg-muted);
+  padding: 0.125rem 0.25rem;
+  border-radius: var(--radius-sm);
+}
+
+pre {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  background-color: var(--bg-muted);
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  overflow-x: auto;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+}
+
+/* Horizontal rule */
+hr {
+  border: none;
+  border-top: 1px solid var(--border-default);
+  margin: var(--space-8) 0;
+}
+
+/* Blockquote */
+blockquote {
+  border-left: 4px solid var(--border-emphasis);
+  padding-left: var(--space-4);
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
+/* Lists */
+ul, ol {
+  padding-left: var(--space-6);
+}
+
+li {
+  margin-bottom: var(--space-1);
+}
+
+/* Tables */
+table {
+  width: 100%;
+}
+
+th {
+  text-align: left;
+  font-weight: var(--font-semibold);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 2px solid var(--border-default);
+}
+
+td {
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--border-default);
+}
+
+/* Form elements */
+input,
+textarea,
+select {
+  font-family: var(--font-sans);
+}
+
+/* Placeholder text */
+::placeholder {
+  color: var(--text-disabled);
+  opacity: 1;
+}
+
+/* ============================================
+ * UTILITY CLASSES
+ * ============================================ */
+
+/* Screen reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Not screen reader only (undo sr-only) */
+.not-sr-only {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
