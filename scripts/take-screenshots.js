@@ -13,6 +13,7 @@ const pages = [
   { name: 'shadow-elevation', file: 'shadow-elevation.html', fullPage: true },
   { name: 'component-showcase', file: 'component-showcase.html', fullPage: true },
   { name: 'neutral-palette', file: 'gray-tone-comparison.html', fullPage: true },
+  { name: 'layouts-showcase', file: 'layouts-showcase.html', fullPage: true },
 ];
 
 async function takeScreenshots() {

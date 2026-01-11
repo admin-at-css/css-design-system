@@ -66,6 +66,7 @@ Interactive HTML documentation showcasing all design tokens and components. Open
 | [Shadow & Elevation](./references/shadow-elevation.html) | Two-part shadows, z-index, focus rings | <img src="./docs/screenshots/shadow-elevation.png" width="200"> |
 | [Component Showcase](./references/component-showcase.html) | Interactive component demos | <img src="./docs/screenshots/component-showcase.png" width="200"> |
 | [Neutral Palette](./references/gray-tone-comparison.html) | Slate Gray — chosen neutral system | <img src="./docs/screenshots/neutral-palette.png" width="200"> |
+| [Layouts & Navigation](./references/layouts-showcase.html) | Sidebars, trees, layout templates | <img src="./docs/screenshots/layouts-showcase.png" width="200"> |
 
 ---
 
